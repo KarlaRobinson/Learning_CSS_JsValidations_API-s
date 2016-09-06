@@ -1,5 +1,18 @@
 <h1>POST COOL URL</h1>
-
-  <%= @title %>
-  <%= @price %>
-  <%= @description %>
+  <h3>Let's review your information:</h3>
+  <%= @name %>
+  <%=  params[:lastname] %>
+  <h4>Your bio: </h4>
+  <%=  params[:Bio] %>
+  <h4>Your birthday is: </h4>
+  <%=  params[:post]["day"]%>
+  <%=  params[:post][:month]%>
+  <%=  params[:post]["year"]%>
+  <h4>You are:</h4>
+  <%=  params[:gender]%>
+  <h4>You like:</h4>
+  <%=  params[:option1]%>
+  <%=  params[:option2]%>
+  <%=  params[:option3]%>
+  <h4>You would like to be contacted by:</h4>
+  <%=  params[:contact]%>

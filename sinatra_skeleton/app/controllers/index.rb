@@ -5,23 +5,17 @@ get '/' do
 end
 
 get '/cool_url' do
-
-  @title = params[:title]
-  @price = params[:price]
-  @description = params[:description]
-
   puts "Este es un GET a /cool_url"
   puts "Esto es lo que vale Params: #{params.inspect}"
-  erb :get_cool_url  # Esto renderea una vista llamada get_cool_url.erb
+  erb :get_cool_url  
+  # Esto renderea una vista llamada get_cool_url.erb
 end
 
 post '/cool_url' do
 
-  @title = params[:title]
-  @price = params[:price]
-  @description = params[:description]
-
+  @name = params[:name]
   puts "Este es un POST a /cool_url"
   puts "Esto es lo que vale Params: #{params.inspect}"
-  erb :post_cool_url  # Esto renderea una vista llamada post_cool_url.erb
+  erb :post_cool_url  
+  # Esto renderea una vista llamada post_cool_url.erb
 end

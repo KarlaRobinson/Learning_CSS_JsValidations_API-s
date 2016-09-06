@@ -1,10 +1,39 @@
 <h1> GET COOL URL </h1>
 
-<form method="POST" action="/cool_url">
-
-<input type="text" placeholder="title" name="title">
-<input type="text" placeholder="price" name="price">
-<textarea name="description" placeholder="description "></textarea>
+<fieldset>
+<legend>Get method:</legend>
+<form method="get" action="/cool_url">
+<input type="text" placeholder="name" name="name">
+<input type="text" placeholder="lastname" name="lastname">
+<textarea name="Bio" placeholder="bio "></textarea>
 <input type="submit" value="submit">
+</fieldset>
+</form>
 
+<fieldset>
+<legend>Post method:</legend>
+<h4>Tell us about yourself:</h4>
+<form method="post" action="/cool_url">
+  <input type="text" placeholder="name" name="name">
+  <input type="text" placeholder="lastname" name="lastname">
+  <textarea name="Bio" placeholder="bio "></textarea>
+    <h4>Please enter your bithday:</h4>
+    <input type="text" placeholder="day" name="post[day]">
+    <input type="text" placeholder="month" name="post[month]">
+    <input placeholder="year" name="post[year]">
+    <h4>Gender:</h4>
+    <input type="radio" name="gender" value="Female"> Female<br>
+    <input type="radio" name="gender" value="Male"> Male<br>
+    <h4>Which of the following activities do you enjoy:</h4>
+    <input type="checkbox" name="option1" value="Swimming"> Swimming<br>
+    <input type="checkbox" name="option2" value="Biking" > Biking<br>
+    <input type="checkbox" name="option3" value="Running"> Running<br>
+    <h4>How would you like to be contacted:</h4>
+      <select name="contact">
+        <option value="email">By email</option>
+        <option value="cellphone">By cellphone</option>
+        <option value="text">By text</option>
+      </select>
+    <input type="submit" value="submit">
+  </fieldset>
 </form>
