@@ -1,0 +1,49 @@
+.container {
+  margin: 0 auto;
+  width: 768px;
+}
+
+nav {
+  background-color: black;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  margin-left: 0;
+  padding-left: 80px;
+  text-align: center;
+}
+
+#logo {
+  /*position: relative;*/
+  float: left;
+}
+
+ul {
+  /*background-color: red;*/
+  /*height: 50px;*/
+  /*height: 40px;
+  overflow: hidden; */
+}
+
+li {
+  display: inline-block;
+  font-size: 20px;
+  padding-left: 50px;
+  padding-right: 30px;
+  padding-top: 10px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.content {
+  clear: both;
+  padding-top: 200px;
+}
+
+div > strong > i {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
