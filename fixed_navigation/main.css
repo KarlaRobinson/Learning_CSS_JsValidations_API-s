@@ -9,27 +9,23 @@ nav {
   width: 100%;
   position: fixed;
   margin-left: 0;
-  padding-left: 80px;
   text-align: center;
 }
 
 #logo {
-  /*position: relative;*/
-  float: left;
+  display: inline-block;
 }
 
-ul {
-  /*background-color: red;*/
-  /*height: 50px;*/
-  /*height: 40px;
-  overflow: hidden; */
+ul{
+  display: inline-block;
 }
+
 
 li {
   display: inline-block;
   font-size: 20px;
-  padding-left: 50px;
-  padding-right: 30px;
+  padding-left: 30px;
+  padding-right: 10px;
   padding-top: 10px;
 }
 
@@ -47,3 +43,12 @@ div > strong > i {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.top-nav {
+  height: 50px;
+}
+
+
+
+
+
