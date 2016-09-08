@@ -1,8 +1,12 @@
 <h1>Find Anagrams!</h1>
 
-<% if @new_word %>
-  <p>Estos son anagramas para '<%= @new_word %>':</p>
-  <p># Aqui deberás enlistar todos los anagramas</p>
+<% if @user_word %>
+  <% if @anagrams == "" %>
+      <p>Sorry no anagrams for '<%= @user_word %>', try another word.</p>
+  <% else %>
+      <p>Estos son anagramas para '<%= @user_word %>':</p>
+      <p><%= @anagrams%></p>
+  <% end %>
 <% end %>
 
 
