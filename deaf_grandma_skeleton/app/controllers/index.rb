@@ -7,11 +7,10 @@ end
 post '/abuelita' do
   user_input = params[:user_input]
   if user_input.include? ("!")
-    @message = "NO, NO DESDE 1983"
+    "NO, NO DESDE 1983"
   elsif user_input.downcase == "bye"
-    @message = "Adios!"
+    "Adios!"
   else
-    @message = "HUH?! NO TE ESCUCHO, HIJO!"
+    "HUH?! NO TE ESCUCHO, HIJO!"
   end
-  redirect to "/?abuelita=#{@message}"
 end

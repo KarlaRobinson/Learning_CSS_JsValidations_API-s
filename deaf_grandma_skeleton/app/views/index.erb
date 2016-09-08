@@ -2,8 +2,11 @@
   <% if @abuelita %>
     <p>Tu Abuelita dice: "<span id="grandma_says"><%= @abuelita %></span>"</p>
   <% end %>
+  <br>
+  <div id="ajax_method"></div>
+  <br>
 
-  <form action="/abuelita" method="post">
+  <form id="form1" action="/abuelita" method="post">
     Dile algo a tu abuelita:
     <br>
     <input type="text" name="user_input">
