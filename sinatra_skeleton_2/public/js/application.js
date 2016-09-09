@@ -4,9 +4,7 @@ $(document).ready(function() {
 	// Esto garantiza que si amarramos(bind) una función a un elemento 
 	// de HTML este exista ya en la página. 
 
-
-$('.tabs a').on("click", function (){var tab = ($(this).attr('href'));
-// });
+});
 
 
 
