@@ -5,11 +5,8 @@ $(document).ready(function() {
 	// de HTML este exista ya en la página. 
 
 
-// $("id_of_each_url").on("click", function(event){
-//   $("#update").click(function() {
-//     count++;
-//   });
-});
+$('.tabs a').on("click", function (){var tab = ($(this).attr('href'));
+// });
 
 
 

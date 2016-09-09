@@ -12,14 +12,20 @@
 <br>
 <fieldset>
   <legend>Try any site below:</legend>
-    <a href= <%= @urls[0][1]%> > <%= @urls[0][0]%> </a>
+  <br>
+  <% @urls.each_with_index do |object, i| %>
+    <a id="<%=object.id%>" href= "/<%=object.short_url%>" > <%=i+1%>. <%=object.short_url%>   Visted (<%=object.click_count%>) times.</a>
+
     <br>
-    <a href= <%= @urls[1][1]%> > <%= @urls[1][0]%> </a>
+  <% end %>
+
     <br>
-    <a href= <%= @urls[2][1]%> > <%= @urls[2][0]%> </a>
 </fieldset>
 
 
+<!-- action="/:short_url" method="post" -->
+
+<!-- "/<%#=object.short_url%>" -->
 
 
   
