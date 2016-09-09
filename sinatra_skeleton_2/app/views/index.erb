@@ -1,0 +1,25 @@
+  <h1>Welcome!</h1>
+  <p>Let's shorten your Url.</p>
+
+  <form action="/urls" method="post" >
+      <input type="text" placeholder="url" name="long_url">
+      <input type="submit" value="Go!">
+  </form>
+
+
+<br>
+<br>
+<br>
+<fieldset>
+  <legend>Try any site below:</legend>
+    <a href= <%= @urls[0][1]%> > <%= @urls[0][0]%> </a>
+    <br>
+    <a href= <%= @urls[1][1]%> > <%= @urls[1][0]%> </a>
+    <br>
+    <a href= <%= @urls[2][1]%> > <%= @urls[2][0]%> </a>
+</fieldset>
+
+
+
+
+  
