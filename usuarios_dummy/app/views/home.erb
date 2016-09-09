@@ -1,0 +1,30 @@
+<h1>Welcome!</h1>
+
+<% if @message == "InvalidEntry"%>
+      <h4 style="color: red">That information does not match our records.</h4>
+<% end %>
+
+<% if @message == "SignOut"%>
+      <h4>You have signed out of your account.</h4>
+<% end %>
+
+<fieldset>
+  <legend>New to this site? Register with us now!</legend>
+  <form action="/register" method="post">
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="email" name="email">
+    <input type="password" placeholder="password" name="password">
+    <input type="submit" value="Register!">
+  </form>
+</fieldset>
+
+<br>
+<br>
+<fieldset>
+  <legend>Have an account? Sign in below!</legend>
+  <form action="/auth" method="post">
+    <input type="text" placeholder="email" name="email">
+    <input type="password" placeholder="password" name="password">
+    <input type="submit" value="Sign in!">
+  </form>
+</fieldset>
