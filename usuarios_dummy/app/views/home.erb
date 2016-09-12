@@ -1,11 +1,15 @@
-<h1>Welcome!</h1>
+<h1>www.website.com</h1>
 
-<% if @message == "InvalidEntry"%>
+<% if @action == "InvalidEntry"%>
       <h4 style="color: red">That information does not match our records.</h4>
 <% end %>
 
-<% if @message == "SignOut"%>
+<% if @action == "SignOut"%>
       <h4>You have signed out of your account.</h4>
+<% end %>
+
+<% if @action == "Error"%>
+      <h4 style="color: red">You must be logged in to access this page.</h4>
 <% end %>
 
 <fieldset>

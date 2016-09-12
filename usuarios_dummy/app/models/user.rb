@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
   # validates :password, length: { is: 6 }
 
   def self.authenticate(email, password)
-    if self.find_by({email: email}).password == password
+    if self.find_by({email: email}) == nil
+      return nil
+    elsif self.find_by({email: email}).password == password
       self.find_by({email: email})
     else
       nil
