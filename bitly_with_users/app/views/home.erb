@@ -1,0 +1,56 @@
+<h1>Welcome to shorten your URL!</h1>
+
+<% if @action == "InvalidEntry"%>
+      <h4 style="color: red">Please enter valid information. Passwords must be 6 characters long. </h4>
+<% elsif @action == "SignOut"%>
+      <h4>You have signed out of your account.</h4>
+<% elsif @action == "Error"%>
+      <h4 style="color: red">You must be logged in to access this page.</h4>
+<% elsif @action == "Denied"%>
+      <h4 style="color: red">That information does not match our records.</h4>
+<% end %>
+
+<fieldset>
+  <legend>New to this site? Register with us now!</legend>
+  <form action="/register" method="post">
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="email" name="email">
+    <input type="password" placeholder="password" name="password">
+    <input type="submit" value="Register!">
+  </form>
+</fieldset>
+
+<br>
+<br>
+<fieldset>
+  <legend>Have an account? Sign in below!</legend>
+  <form action="/auth" method="post">
+    <input type="text" placeholder="email" name="email">
+    <input type="password" placeholder="password (6 characters)" name="password">
+    <input type="submit" value="Sign in!">
+  </form>
+</fieldset>
+
+<br>
+<br>
+<br>
+  <h3>Or, try it out as a guest!</h3>
+
+  <form action="/urls" method="post" >
+      <input type="text" placeholder="url" name="long_url">
+      <input type="submit" value="Go!">
+  </form>
+
+<br>
+<fieldset>
+  <legend>Try any site below:</legend>
+  <br>
+  <% sorted_list = @urls.sort_by &:id %>
+  <% sorted_list.each_with_index do |object, i| %>
+    <a id="<%=object.id%>" href= "/<%=object.short_url%>" > <%=i+1%>. <%=object.short_url%>   Visted (<%=object.click_count%>) times.
+      <% if object.user != nil%> (user: <%=object.user_id%>)<% end%>
+    </a>
+  <br>
+  <% end %>
+  <br>
+</fieldset>
