@@ -1,11 +1,11 @@
-
+<h1>Quiz-Yourself</h1>
 <h1>Hi, <%=@user.name%>!</h1>
 
-<p>Aren't you glad you have a personal profile on this website </p>
-  <form action="/post/new" method="get">
+<p>Welcome to Quiz-Yourself. Let's play!</p>
+  <form action='/setup' method="get">
     <input type="submit" value="New Game">
   </form>
-  <form action="/post/new" method="get">
+  <form action="/stats" method="get">
     <input type="submit" value="See Stats">
   </form>
 <br>

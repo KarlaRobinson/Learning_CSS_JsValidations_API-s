@@ -1,0 +1,21 @@
+<h1>Quiz-Yourself</h1>
+<p>Category chosen: <%=@deck.name%></p>
+<p>Ok, ready?</p>
+<br>
+<p>Question:</p>
+<%=@deck.cards[0].question%>
+<br>
+A.<%=@deck.cards[0].answer%>
+<br>
+B.<%=@deck.cards[0].fake_ans1%>
+<br>
+C.<%=@deck.cards[0].fake_ans2%>
+<br>
+<form action='/guess/<%=@deck.cards[0].id%>' method="post">
+  <input type="text" placeholder="guess" name="guess">
+  <input type="submit" value="Enter">
+  <!-- <input type="hidden" name="card_num" value="num"> -->
+</form>
+
+
+<%#= erb :_next_question, layout: false %>

@@ -4,11 +4,6 @@ before '/users/:id' do
   end
 end
 
-get '/' do
-  @action = params[:action]
-  erb :home
-end
-
 post '/register' do
   name = params[:name]
   email = params[:email]

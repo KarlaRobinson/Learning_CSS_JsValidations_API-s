@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   # validates :password, uniqueness: true
   # validates :email, format: { with: /\bgmail\b/}
   # validates :password, length: { is: 6 }
-
+  has_many :rounds
+  
   def self.authenticate(email, password)
     if self.find_by({email: email}) == nil
       return nil

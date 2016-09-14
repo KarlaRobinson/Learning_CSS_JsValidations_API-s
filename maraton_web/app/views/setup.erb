@@ -1,0 +1,18 @@
+<h1>Quiz-Yourself</h1>
+<a>Great! Let's get started. Choose a deck:</a>
+
+<form action='/deck:id' method="get">
+  <input type="submit" value="History">
+  <input type="hidden" name="name" value="History">
+</form>
+<form action='/deck:id' method="get">
+  <input type="submit" value="Science">
+  <input type="hidden" name="name" value="Science">
+</form>
+
+<a>Or create a new deck:</a>
+<form action='/deck/new' method="get">
+  <input type="text" placeholder="category" name="text">
+  <input type="submit" value="Create">
+  <input type="hidden" name="name" value="Science">
+</form>
