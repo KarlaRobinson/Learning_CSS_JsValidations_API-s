@@ -1,0 +1,37 @@
+<h1>Anonymous Blog</h1>
+<br>
+  <legend class="search">Find post by title:</legend>
+    <form action="/posts/:id" method="get">
+      <input type="text" placeholder="post title" name="title">
+      <input type="submit" value="Go">
+    </form>
+  <legend class="search">Find posts by hashtag:</legend>
+    <form action="/tags/:id" method="get">
+      <input type="text" placeholder="hashtag" name="text">
+      <input type="submit" value="Go">
+    </form>
+<br>
+<p>
+  <% @posts.each do |object| %>
+    <div>
+      <br>
+      <fieldset>
+        <legend id="title"><%=object.title%></legend>
+        <a id="body"><%=object.body%></a>
+        <br>
+        <%object.tags.each do |tag| %>
+          <a id="hash">#<%=tag.text%> </a>
+        <% end %>
+      </fieldset>
+          <form action="/post/edit" method="get">
+            <input type="submit" value="Edit">
+            <input type="hidden" name="post_id" value="<%=object.id%>">
+          </form>
+          <form action="/post/delete" method="post">
+            <input type="submit" value="Delete">
+            <input type="hidden" name="post_id" value="<%=object.id%>">
+          </form>
+      <br>
+    </div>
+  <% end %>
+ </p>

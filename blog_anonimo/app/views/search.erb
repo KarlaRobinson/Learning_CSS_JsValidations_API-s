@@ -1,0 +1,41 @@
+<h1>Anonymous Blog</h1>
+<br>
+<% if @posts == nil%>
+  <a>Sorry we could not find any posts that match.</a>
+<% else %>
+<p>Is this what you were looking for?</p>
+<p>______________________________________________</p>
+    <%@posts.each do |object|%>
+  <fieldset>
+      <legend><%=object.title%></legend>
+      <a><%=object.body%></a>
+      <br>
+      <%unless object.tags == []%>
+      <a>#<%=object.tags[0].text%> #<%=object.tags[1].text%></a>
+      <%end%>
+  </fieldset>
+  <br>
+    <%end%>
+<p>______________________________________________</p>
+<% end %>
+<br>
+<br>
+
+  <form action="/posts" method="get">
+      <input type="submit" value="See Posts">
+  </form>
+  <legend class="search">Look for another post:</legend>
+  <form action="/posts/:id" method="get">
+    <input type="text" placeholder="post title" name="title">
+    <input type="submit" value="Go">
+  </form>
+  <legend class="search">Try another hashtag:</legend>
+  <form action="/tags/:id" method="get">
+    <input type="text" placeholder="hashtag" name="text">
+    <input type="submit" value="Go">
+  </form>
+
+
+
+
+<!--   not showing error message when something is not found -->
