@@ -14,9 +14,8 @@
     <legend>Enter your new information below:</legend>
     <form action="/post/edit" method="post">
         <input type="text" placeholder="title" name="title">
-        <input type="text" placeholder="post" name="body">
-        <input type="text" placeholder="hashtag1" name="tag1">
-        <input type="text" placeholder="hashtag2" name="tag2">
+        <input type="text" placeholder="body" name="body">
+        <input type="text" placeholder="hashtags" name="tag">
         <input type="hidden" name="post_id" value="<%=@post.id%>">
       <input type="submit" value="Edit">
     </form>

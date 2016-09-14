@@ -1,21 +1,23 @@
 <h1>Anonymous Blog</h1>
 <br>
 <% if @posts == nil%>
-  <a>Sorry we could not find any posts that match.</a>
+  <a>Sorry we could not find any <%=@message%>.</a>
 <% else %>
-<p>Is this what you were looking for?</p>
+<p>Your search for <%=@message%>:</p>
 <p>______________________________________________</p>
-    <%@posts.each do |object|%>
+  <%@posts.each do |object|%>
   <fieldset>
       <legend><%=object.title%></legend>
       <a><%=object.body%></a>
       <br>
       <%unless object.tags == []%>
-      <a>#<%=object.tags[0].text%> #<%=object.tags[1].text%></a>
+      <%object.tags.each do |tag|%>
+          <a>#<%=tag.text%></a>
+        <%end%>
       <%end%>
   </fieldset>
   <br>
-    <%end%>
+  <%end%>
 <p>______________________________________________</p>
 <% end %>
 <br>
@@ -34,8 +36,3 @@
     <input type="text" placeholder="hashtag" name="text">
     <input type="submit" value="Go">
   </form>
-
-
-
-
-<!--   not showing error message when something is not found -->

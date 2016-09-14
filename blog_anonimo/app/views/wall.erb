@@ -10,6 +10,9 @@
       <input type="text" placeholder="hashtag" name="text">
       <input type="submit" value="Go">
     </form>
+    <form action="/post/new" method="get">
+      <input type="submit" value="New Post">
+    </form>
 <br>
 <p>
   <% @posts.each do |object| %>

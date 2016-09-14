@@ -1,6 +1,9 @@
 # Mostrar todos los posts con un tag.
 get '/tags/:id' do
-  @posts = Tag.all.where(text: params[:text]).map{|ob| ob.posts[0]}
-  puts "tag search"
+  tag = Tag.all.find_by(text: params[:text])
+  unless tag == nil
+    @posts = tag.posts.map{|post| post}
+  end
+  @message = "posts with the hashtag ##{params[:text]}"
   erb :search
 end

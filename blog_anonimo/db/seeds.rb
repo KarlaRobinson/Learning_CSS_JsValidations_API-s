@@ -1,7 +1,14 @@
-post1 = Post.create(title: "BestFriend", body: "Eating chocolate with my bestie!")
+post1 = Post.create(title: "BestFriendTime", body: "Eating chocolate with my bestie!")
 post2 = Post.create(title: "RainySunday", body: "Wishing the rain would stop so I can take my dog for a walk.")
 post3 = Post.create(title: "Incomplete")
+post4 = Post.create(title: "Home From Work", body: "Finished before 8 pm what?")
+post5 = Post.create(title: "Naptime", body: "What better than to take a mid-afternoon nap.")
+post6 = Post.create(title: "Saturday", body: "At work...")
 
-
-post1.tags << Tag.create(text: "BestFriendsLove")
+post1.tags << Tag.create(text: "BestFriendLove")
 post1.tags << Tag.create(text: "SugarOverdose")
+post2.tags << Tag.create(text: "SadFace")
+post2.tags << Tag.create(text: "ThereIsGoingToBeAnAccident")
+post4.tags << Tag.create(text: "NeedANewJob")
+post5.tags << Tag.create(text: "NotWakingUpTillTomorrow")
+post6.tags << Tag.create(text: "NeedANewJob")
