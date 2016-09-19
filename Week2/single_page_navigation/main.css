@@ -59,3 +59,7 @@ h5 {
 .clear {
   clear: both;
 }
+
+.section {
+  margin-bottom: 400px;
+}
