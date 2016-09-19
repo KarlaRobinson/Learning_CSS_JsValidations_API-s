@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!--
+    https://necolas.github.io/normalize.css/
+    Normalize.css makes browsers render all elements more consistently and in line
+    with modern standards. It precisely targets only the styles that need normalizing.
+  -->
+  <link rel="stylesheet" href="normalize.css">
+
+  <!-- Especifica que podamos utilizar acentos dentro del HTML  -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <!-- Aqué debe de ir tu css -->
+  <link rel="stylesheet" href="main.css">
+  <title>Reto de CSS</title>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img id="logo" src="codea-logo.png">
+    </header>
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+      <br clear="all">
+    </nav>
+    <div class="content">
+      <h2 class="main-title">Conviértete en un Desarrollador Web en 12 semanas</h2>
+      <div id="registration">
+        <form name="sign_up" action="#" method="post">
+          <input id="registration_nombre" class="inputs" type="text" name="nombre" placeholder="Nombre">
+          <input id="registration_email" class="inputs" type="text" name="email" placeholder="Email">
+          <textarea id="registration_info" class="inputs" type="textarea" name="info" placeholder="Por que te interesa aplicar o cuales son tus dudas?"></textarea>
+          <input id="registration_telefono" class="inputs" type="text" name="telefono" placeholder="Dejanos tu telefono">
+
+          <input id="registration_btn" class="inputs" type="submit" value="Enviar">
+        </form>
+      </div>
+    </div>
+    <div class="footer">
+      <strong><i>Derechos &copy; 2015 Lorem S.A. de C.V</i></strong>
+    </div>
+  </div>
+</body>
+</html>
