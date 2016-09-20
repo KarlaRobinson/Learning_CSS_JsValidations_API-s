@@ -1,0 +1,37 @@
+<header>
+  <img src="img/codea-logo.png" id="logo">
+</header>
+
+<h1 id="main-title">¡RAYUELA!</h1>
+    <button id="start_btn">Jugar</button><br><br>
+
+  <h1 id="count"></h1>
+
+
+    <table class="table">
+      <tr id="Player1">
+        <td id="player1"><strong>Jugador:1</strong></td>
+        <td id="p1_1" class="active"></td>
+        <%i = 2%>
+        <%99.times do%>
+        <td id="p1_<%=i%>"></td>
+          <%if i == 90 %>
+          <td class="finish"></td>
+          <%end%>
+        <%i += 1%>
+        <%end%>
+      </tr>
+
+      <tr id="Player2">
+        <td id="player2"><strong>Jugador:2</strong></td>
+        <td id="p2_1" class="active"></td>
+        <%i = 2%>
+        <%99.times do%>
+        <td id="p2_<%=i%>"></td>
+          <%if i == 90 %>
+          <td class="finish"></td>
+          <%end%>
+        <%i += 1%>
+        <%end%>
+      </tr>
+</table>
