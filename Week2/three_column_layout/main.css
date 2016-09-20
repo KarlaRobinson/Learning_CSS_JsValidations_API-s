@@ -1,0 +1,52 @@
+.container {
+  margin: 0 auto;
+  width: 900px;
+}
+
+header {
+  background-color: black;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+}
+
+.main-title {
+  text-align: center;
+}
+
+#content1 {
+  float:left;
+  width:300px;
+  /*background: pink;*/
+}
+
+#content2 {
+  float:right;
+  width:600px;
+}
+
+#content2-1{
+  /*background: red;*/
+  float:left;
+  width:300px;
+}
+
+#content2-2 {
+  /*background: yellow;*/
+  float:right;
+  width:300px;
+}
+
+#about {
+  clear: both;
+}
+
+h5 {
+  text-align: center;
+}
+
+ul {
+  list-style-type: square;
+}
