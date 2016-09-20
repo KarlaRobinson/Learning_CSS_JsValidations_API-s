@@ -1,0 +1,79 @@
+.container {
+  margin: 0 auto;
+  width: 750px;
+}
+
+header {
+  background-color: black;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+}
+
+.main-title {
+  text-align: center;
+}
+
+#wrap {
+  margin: 0 auto;
+  width: 750px;
+  background: white;
+}
+
+.footer {
+  /*clear:both;*/
+}
+
+#main1 {
+  float: left;
+  width: 375px;
+} 
+
+#side1 {
+  padding-top: 30px;
+  float: right;
+  width: 375px;
+}
+
+#turtles {
+  clear: both;
+}
+
+#main2 {
+  float: left;
+  width: 375px;
+} 
+
+#side2 {
+  padding-top: 30px;
+  float: right;
+  width: 375px;
+}
+
+#turtle2 {
+  clear:both;
+}
+
+#main3 {
+  float: left;
+  width: 375px;
+} 
+
+#side3 {
+  padding-top: 30px;
+  float: right;
+  width: 375px;
+}
+
+#pricing {
+  clear: both;
+}
+
+
+
+
+
+
+
