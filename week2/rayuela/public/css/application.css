@@ -44,23 +44,54 @@ button:hover {
   text-decoration: none;
 }
 
+#count {
+  float: left;
+}
+
+#result{
+  float: right;
+}
+
 .table {
   border: 2px solid black;
+  clear: both;
 }
 
 .table td {
-  background-color: white;
+  /*background-color: white;*/
   height: 20px;
   width: 10px;
   border-bottom: 1px solid black;
 }
 
 .table td.active {
-  background-color: blue;
+  background-color: black;
 }
 
 .table td.finish {
-  background-color: red;
+  border-right: 2px solid red;
 }
 
+tr.active {
+  background-color: #98FB98;
+}
+
+
+#link {
+  margin-top: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+#stats_btn {
+  margin-top: 100px;
+}
 
