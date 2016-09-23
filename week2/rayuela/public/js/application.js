@@ -77,26 +77,25 @@ $(document).ready(function() {
     if (finish == 2) {
       if (p1_loc == p2_loc) {
         $("#result").text("Apa, un empate!");
-        $.post( '/stats', "data=0");
+        $('#form_stats').append(form_stats(0));
       } else if (Math.abs(90 - p1_loc) > Math.abs(90 - p2_loc)) {
         $("#result").text("Jugador 2 es el ganador!!");
-        $('#Player2').addClass('active')
-        $.post( '/stats', "data=2");
+        $('#Player2').addClass('active');
+        $('#form_stats').append(form_stats(2));
       } else {
         $("#result").text("Jugador 1 es el ganador!!");
-        $('#Player1').addClass('active')
-        $.post( '/stats', "data=1");
+        $('#Player1').addClass('active');
+        $('#form_stats').append(form_stats(1));
       };
     };
   };
 });
 
 
-
-
-
-
-
+function form_stats(data){
+  var game_id = $('.game_id').attr('id');
+  return '<form action="/stats" method="post"><input type="hidden" name="data" value="' + data + '"><input type="hidden" name="game_id" value="' + game_id + '"><input type="submit" value="Ver resultados"></form>';
+}
 
 
 

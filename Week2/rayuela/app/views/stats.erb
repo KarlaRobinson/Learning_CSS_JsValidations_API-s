@@ -1,11 +1,8 @@
-<header>
-  <img src="img/codea-logo.png" id="logo">
-</header>
-
 <h1 id="main-title">¡RAYUELA!</h1>
 
-<h3>Estas en stats!</h3>
-
-<div id="link">
-<a href="http://localhost:9393/stats">http://localhost:9393/stats</a>
-</div>
+<h3>Estas en stats del juego #<%=@game.id%>!</h3>
+<p><strong>Jugador:1</strong> <%=@game.players[0].name%></p>
+<p><strong>Jugador:2</strong> <%=@game.players[1].name%></p>
+<br>
+<br>
+<h4><%=@game.winner%></h4>
