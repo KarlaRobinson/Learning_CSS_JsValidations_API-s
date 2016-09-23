@@ -1,0 +1,33 @@
+  <h1>Profile</h1>
+
+  <h1>Hi, <%=@user.name%>!</h1>
+  <h4>Email: <%=@user.email%></h4>
+  <p>This is a private profile page</p>
+
+ <fieldset>
+  <legend>Edit your information</legend>
+  <form action="/edit/users/<%=@user.id%>" method="post">
+    <p>You must enter your current password to change any information:</p>
+    <input type="password" placeholder="current password" name="pass1">
+    <br>
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="email" name="email">
+    <input type="text" placeholder="new password" name="pass2">
+    <input type="submit" value="Edit">
+  </form>
+</fieldset>
+
+<fieldset>
+  <legend>Sign out</legend>
+  <form action="/sign_out" method="post">
+    <input type="submit" value="Exit">
+  </form>
+</fieldset> 
+
+
+<fieldset>
+  <legend>Delete this account?</legend>
+  <form action="/delete/users/<%=@user.id%>" method="post">
+    <input type="submit" value="Delete">
+  </form>
+</fieldset>
