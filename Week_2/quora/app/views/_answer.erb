@@ -1,0 +1,15 @@
+<% @question.answers.each do |ans|%>
+<fieldset >
+  <legend>Answer #<%= ans.id %></legend>
+  <p><%= ans.text %></p>
+  <p>[<%= ans.votes.length %> votes]</p>
+    <form action="/vote/answer/<%=ans.id%>" method="post">
+      <input type="submit" value="UpVote">
+    </form>
+</fieldset>
+<% end %>
+
+
+
+
+
