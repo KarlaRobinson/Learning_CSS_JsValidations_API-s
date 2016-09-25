@@ -1,0 +1,43 @@
+.container {
+  margin: 0 auto;
+  width: 720px;
+}
+
+header {
+  background-color: black;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+}
+
+ul {
+
+}
+
+li {
+  display: inline-block;
+  padding: 0 px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: -1px;
+  width: 120px;
+  text-align: center;
+  background: linear-gradient(#d3d3d3, #EBE9E9, #d3d3d3);
+}
+
+li:first-child {
+  border-radius: 7px 0px 0px 7px;
+}
+
+li:last-child {
+  border-radius: 0px 7px 7px 0px;
+}
+
+a{
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+}
