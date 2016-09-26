@@ -24,3 +24,9 @@ post '/answer' do
   redirect to ("/question/#{answer.question_id}")
 end
 
+#list users answerss
+get '/answers/user/:id' do
+  @questions = Question.all
+  erb :users_answers
+end
+

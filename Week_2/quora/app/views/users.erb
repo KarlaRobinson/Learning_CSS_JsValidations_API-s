@@ -1,7 +1,11 @@
+<h1>Quora Users</h1>
 
-
-
-
-<%if @message == "password"%>
-<p style="color: red">The password you entered is incorrect.</p>
-<%end%>
+<% @all.each do |user| %>
+<fieldset >
+  <legend>Quora User #<%=user.id%></legend>
+  <p><%= user.name %></p>
+  <p>[<%= user.questions.length %> questions]</p>
+  <p>[<%= user.answers.length %> answers]</p>
+  <p>[<%= user.votes.length %> votes]</p>
+</fieldset>
+<% end %>

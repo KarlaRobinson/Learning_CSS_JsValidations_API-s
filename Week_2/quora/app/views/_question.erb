@@ -1,20 +1,15 @@
-<% if @all[0] == nil %>
-  <% @all = [@all] %>
-<% end %>
-
-<h>Questions in Quora</h>
-<% @all.each do |question| %>
 <fieldset >
   <legend>Question #<%= question.id %></legend>
   <p><%= question.text %></p>
   <p>[<%= question.votes.length %> votes]</p>
-    <form action="/vote/question/<%=question.id%>" method="post">
+  <p>[<%= question.answers.length %> answers]</p>
+    <form action="/vote/question/<%= question.id %>" method="post">
       <input type="submit" value="UpVote">
     </form>
     <form action='/answer' method="post">
-      <input type="text" placeholder="answer" name="text">
+      <textarea type="text" placeholder="answer" name="text"></textarea>
       <input type="hidden" name="question_id" value="<%= question.id %>">
       <input type="submit" value="AddAnswer">
     </form>
 </fieldset>
-<% end %>
+

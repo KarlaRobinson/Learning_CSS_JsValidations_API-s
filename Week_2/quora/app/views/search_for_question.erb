@@ -1,0 +1,12 @@
+
+  <% question = @question %>
+  <div id="question">
+    <%= erb :_question, locals: {question: question}, layout: false %>
+  </div>
+
+  <% question.answers.each_with_index do |ans, index| %>
+    <div id="answer">
+      <%= erb :_answer, locals: {ans: ans, index: (index + 1)}, layout: false %>
+    </div>
+  <% end %>
+

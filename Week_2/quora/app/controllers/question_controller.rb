@@ -13,16 +13,16 @@ end
 
 get '/question/:id' do
   @question = Question.find(params[:id])
-  erb :search
+  erb :search_for_question
 end
 
 # list all questions
 get '/questions/all' do
   @all = Question.all
-  erb :list
+  erb :list_questions
 end
 
 #list users questions
 get '/questions/user/:id' do
-  
+  erb :users_questions
 end

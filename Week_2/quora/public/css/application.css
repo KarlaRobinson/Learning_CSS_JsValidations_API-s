@@ -1,15 +1,36 @@
+body {
+/*background-color: #ADD8E6;*/
+}
 .container {
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+  backgroun/*d*/: white;
 }
 th {
   text-align: left;
 }
 
 
-/*.profile_nav {
+#nav_bar {
+  background: black;
+  height: 50px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.profile_nav {
+  margin-top: 10px;
   display: inline-block;
-  width: 25%;
+}
+
+input[type=submit]{
+  color: black;
+  background-color: #ADD8E6;
+}
+
+/*input[value^="MyQuestions"]{
+  color: red;
 }*/
+

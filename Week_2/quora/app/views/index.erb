@@ -1,13 +1,11 @@
   <h1>Welcome to Quora!</h1>
-  <p>This is the home page</p>
-
 
 <% if @action == "InvalidEntry"%>
       <h4 style="color: red">That information does not match our records.</h4>
 <% end %>
 
 <% if @action == "SignOut"%>
-      <h4>You have signed out of your account.</h4>
+      <h4 style="color: red">You have signed out of your account.</h4>
 <% end %>
 
 <% if @action == "Error"%>
@@ -30,16 +28,5 @@
     <input type="text" placeholder="email" name="email">
     <input type="password" placeholder="password" name="password">
     <input type="submit" value="Register!">
-  </form>
-</fieldset>
-
-<br>
-<br>
-<fieldset>
-  <legend>Have an account? Sign in below!</legend>
-  <form action="/login" method="post">
-    <input type="text" placeholder="email" name="email">
-    <input type="password" placeholder="password" name="password">
-    <input type="submit" value="Sign in!">
   </form>
 </fieldset>

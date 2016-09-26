@@ -35,6 +35,12 @@ get '/users/:id' do
   erb :profile
 end
 
+#display all users
+get '/all/users' do
+  @all = User.all
+  erb :users
+end
+
 #update a user
 post '/edit/users/:id' do
 @user = User.find(params[:id])

@@ -1,8 +1,8 @@
+
   <h1>Profile</h1>
 
-  <h1>Hi, <%=@user.name%>!</h1>
+  <h2>Hi, <%=@user.name%>!</h2>
   <h4>Email: <%=@user.email%></h4>
-  <p>This is a private profile page</p>
 
  <fieldset >
   <legend>Edit your information</legend>
@@ -17,15 +17,15 @@
   </form>
 </fieldset>
 
-<fieldset class="profile_nav">
+<fieldset class="input">
   <legend>Create a new question</legend>
   <form action='/question' method="post">
-    <input type="text" placeholder="question" name="text">
+    <textarea type="text" placeholder="question" name="text"></textarea>
     <input type="submit" value="Create">
   </form>
 </fieldset> 
 
-<fieldset class="profile_nav">
+<fieldset class="input">
   <legend>Search for a question</legend>
   <form action='/question/search' method="post">
     <input type="text" placeholder="question number" name="id">
@@ -33,24 +33,3 @@
   </form>
 </fieldset> 
 
-<fieldset class="profile_nav">
-  <legend>See all questions</legend>
-  <form action='/questions/all' method="get">
-    <input type="submit" value="SeeAll">
-  </form>
-</fieldset> 
-
-<fieldset class="profile_nav">
-  <legend>Sign out</legend>
-  <form action="/sign_out" method="post">
-    <input type="submit" value="Exit">
-  </form>
-</fieldset> 
-
-
-<fieldset class="profile_nav">
-  <legend>Delete this account?</legend>
-  <form action="/delete/users/<%=@user.id%>" method="post">
-    <input type="submit" value="Delete">
-  </form>
-</fieldset>

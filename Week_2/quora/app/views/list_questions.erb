@@ -1,0 +1,12 @@
+
+<h1>Questions in Quora</h1>
+
+
+<% @all.each do |question| %>
+  <%= erb :_question, locals: {question: question} %>
+    <form action="/question/<%=question.id%>" method="get">
+      <input type="submit" value="SeeQuestion">
+    </form>
+    <br>
+<% end %>
+
