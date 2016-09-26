@@ -1,0 +1,58 @@
+.container {
+  margin: 0 auto;
+  width: 768px;
+  background: grey;
+}
+
+header {
+  background-color: black;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+}
+
+nav {
+  float: left;
+  width: 168px;
+  background: grey;
+}
+
+ul {
+  padding: 0px;
+}
+
+li {
+  list-style-type: none;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.content {
+  float: right;
+  width: 580px;
+  background: white;
+  padding-left: 20px;
+}
+
+.footer {
+  border-top: 1px solid black;
+  clear: both;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 190px;
+  background: white;
+}
+
+i {
+  font-weight: bold;
+}
