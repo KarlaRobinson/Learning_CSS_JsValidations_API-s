@@ -12,10 +12,6 @@ header {
   margin: 0 auto;
 }
 
-ul {
-
-}
-
 li {
   display: inline-block;
   padding: 0 px;
@@ -40,4 +36,25 @@ a{
   text-decoration: none;
   color: black;
   font-size: 15px;
+}
+
+li:hover .submenu{
+	display: block;
+}
+
+li:hover {
+  background: #666;
+}
+
+.submenu {
+  position: absolute;
+  left: 5px;
+  top: 146px;
+  display: none;
+}
+
+.submenu li {
+  display: block;
+  border-radius: 0px;
+  margin: 2px;
 }
