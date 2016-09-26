@@ -1,7 +1,20 @@
 $(document).ready(function() {
-	// Este código corre después de que `document` fue cargado(loaded) 
-	// completamente. 
-	// Esto garantiza que si amarramos(bind) una función a un elemento 
-	// de HTML este exista ya en la página. 
-
+  $(".form_q").on("click", function(event){
+    event.preventDefault();
+    var id = $(this).serialize(); //returns id as a hash ex: id=1
+    console.log(this);
+    $.post('/vote/question', id, function(data) {
+      $("#vq" + id.slice(-1)).text("[" + data + " votes]");
+    });
+  });
+  $(".form_a").on("click", function(event){
+    event.preventDefault();
+    var id = $(this).serialize(); //returns id as a hash ex: id=1
+    console.log($(this).serialize());
+    console.log("*****************");
+    $.post('/vote/answer', id, function(data) {
+      console.log(data);
+      $("#va" + id.slice(-1)).text("[" + data + " votes]");
+    });
+  });
 });

@@ -1,8 +1,9 @@
 <fieldset >
   <legend>Answer #<%= index %></legend>
   <p><%= ans.text %></p>
-  <p>[<%= ans.votes.length %> votes]</p>
-    <form action="/vote/answer/<%= ans.id %>" method="post">
+  <p id="va<%= ans.id %>">[<%= ans.votes.length %> votes]</p>
+    <form class="form_a" action="/vote/answer/<%= ans.id %>" method="post">
+       <input type="hidden" name="id" value="<%= ans.id %>">
       <input type="submit" value="UpVote">
     </form>
 </fieldset>

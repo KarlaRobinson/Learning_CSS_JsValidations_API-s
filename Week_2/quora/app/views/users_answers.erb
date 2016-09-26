@@ -1,9 +1,12 @@
 
 <h1>Your Answers</h1>
 
+<div class="new_find">
+  <%= erb :_new_find, layout: false %>
+</div>
 <% current_user.answers.each_with_index do |ans, index|%>
   <p>[Question: <%= @questions.find(ans.question_id).text %>]</p>
-   <div id="answer">
+   <div class="answer">
     <%= erb :_answer, locals: {ans: ans, index: (index + 1)}, layout: false %>
   </div>
 <% end %>

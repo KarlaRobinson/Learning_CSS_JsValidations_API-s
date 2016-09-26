@@ -1,18 +1,20 @@
 # create vote
-post '/vote/question/:id' do
+post '/vote/question' do
   question = Question.find(params[:id])
   vote = Vote.create
   current_user.votes << vote
   question.votes << vote
-  redirect to ("/question/#{question.id}")
+  question.votes.length.to_s
 end
 
-post '/vote/answer/:id' do
+post '/vote/answer' do
+  p "*"*50
+  p params[:id]
   answer = Answer.find(params[:id])
   vote = Vote.create
   current_user.votes << vote
   answer.votes << vote
-  redirect to ("/question/#{answer.question_id}")
+  answer.votes.length.to_s
 end
 
 # create new answer

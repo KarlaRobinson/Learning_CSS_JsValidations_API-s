@@ -6,7 +6,7 @@ body {
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
-  backgroun/*d*/: white;
+  /*background: white;*/
 }
 th {
   text-align: left;
@@ -27,7 +27,9 @@ th {
 
 input[type=submit]{
   color: black;
-  background-color: #ADD8E6;
+  background: linear-gradient(#ADD8E6, white);
+  border: none;
+  border-radius: 7px 7px 7px 7px;
 }
 
 /*input[value^="MyQuestions"]{

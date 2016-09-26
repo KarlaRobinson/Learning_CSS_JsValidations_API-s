@@ -1,0 +1,16 @@
+
+<fieldset class="input">
+  <legend>Create a new question</legend>
+  <form action='/question' method="post">
+    <textarea type="text" placeholder="question" name="text"></textarea>
+    <input type="submit" value="Create">
+  </form>
+</fieldset> 
+
+<fieldset class="input">
+  <legend>Search for a question</legend>
+  <form action='/question/search' method="post">
+    <input type="text" placeholder="question number" name="id">
+    <input type="submit" value="Search">
+  </form>
+</fieldset> 

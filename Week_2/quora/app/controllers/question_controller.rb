@@ -12,7 +12,11 @@ post '/question/search' do
 end
 
 get '/question/:id' do
-  @question = Question.find(params[:id])
+  if params[:id].to_i <= Question.all.length
+    @question = Question.find(params[:id])
+  else
+    @question = nil
+  end
   erb :search_for_question
 end
 

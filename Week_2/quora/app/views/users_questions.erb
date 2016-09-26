@@ -1,6 +1,8 @@
 
 <h1>Your Questions</h1>
-
+<div class="new_find">
+  <%= erb :_new_find, layout: false %>
+</div>
 
 <% current_user.questions.each do |question| %>
   <%= erb :_question, locals: {question: question} %>

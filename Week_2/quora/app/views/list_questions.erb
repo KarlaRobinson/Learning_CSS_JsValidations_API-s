@@ -1,6 +1,9 @@
 
 <h1>Questions in Quora</h1>
 
+<div class="new_find">
+  <%= erb :_new_find, layout: false %>
+</div>
 
 <% @all.each do |question| %>
   <%= erb :_question, locals: {question: question} %>
