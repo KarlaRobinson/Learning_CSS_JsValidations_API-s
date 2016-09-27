@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   validates :password_digest, uniqueness: true
   validates :password_digest, presence: true
 
+  has_many :surveys
+  has_many :responses
+
   def password
     @password ||= Password.new(password_digest)
   end

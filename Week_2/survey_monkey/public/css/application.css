@@ -2,8 +2,26 @@
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
 }
 th {
   text-align: left;
+}
+
+#nav_bar {
+  background: black;
+  height: 50px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.profile_nav {
+  margin-top: 10px;
+  display: inline-block;
+}
+
+input[type=submit]{
+  color: black;
+  background: linear-gradient(#ADD8E6, white);
+  border: none;
+  border-radius: 7px 7px 7px 7px;
 }
