@@ -32,6 +32,7 @@ end
 #display a specific user
 get '/users/:id' do
   @user = User.find(params[:id])
+  @all = Survey.all
   erb :profile
 end
 

@@ -1,11 +1,71 @@
-  <h1>Profile</h1>
+ <h1>Hi, <%=current_user.name%>!</h1>
+  <h4 >Email: <%=current_user.email%></h4>
 
-  <h1>Hi, <%=current_user.name%>!</h1>
-  <h4>Email: <%=current_user.email%></h4>
+  <fieldset id="stats">
+    <table id="author">
+        <tr>Authored Surveys:
+          <% u_surveys = @all.where(user_id: current_user.id) %>
+          <% if u_surveys[0] == nil %>
+            <td style="color: grey">You have not created any surveys.</td>
+            </tr>
+          <% else %>
+              <td>Name</td>
+              <td>Url</td>
+              <td>Stats</td>
+            </tr>
+            <% u_surveys.each do |survey| %>
+            <tr>
+              <td><%= survey.name %></td>
+              <td>http://localhost:9393/survey/<%= survey.id %></td>
+              <td>Taken: <%= (survey.responses.length) / 3 %> times.</td>
+            </tr>
+            <% end %>
+          <% end %>
+    </table>
+    <br>
+      <table id="taken">
+          <tr>Surveys Taken:
+          <% if @user.responses.length == 0 %>
+            <td style="color: grey">You have not taken any surveys.</td>
+            </tr>
+          <% else %>
+            <!-- <td>Name</td> -->
+            </tr>
+            <% arr = [] %>
+            <% @user.responses.each{ |res| arr << res.survey_id }%>
+            <% arr.uniq.each do |s_id| %>
+            <tr>
+              <td><%= @all.find(s_id).name %></td>
+            </tr>
+            <% end %>
+          <% end %>
+      </table>
+  </fieldset>
 
+  <br>
+  <div id="survey_list">
+  <p>Surveys you have yet to do:</p>
+  <% if @all.length == 0 %>
+    <p>There are no surveys created yet.</p>
+  <% else %>
+    <% @all.each do |survey| %>
+      <li>
+      <form class="profile_nav" action="/survey/<%= survey.id %>" method="get">
+      <input type="submit" value="<%= survey.name %>">
+      </form>
+      </li>
+    <% end %>
+  <% end %>
+  </div>
+  <br>
+
+
+<br>
+<br>
+<br>
  <fieldset>
   <legend>Edit your information</legend>
-  <form action="/edit/users/<%=@user.id%>" method="post">
+  <form action="/edit/users/<%=current_user.id%>" method="post">
     <p>You must enter your current password to change any information:</p>
     <input type="password" placeholder="current password" name="pass1">
     <br>

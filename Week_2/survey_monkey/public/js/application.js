@@ -1,23 +1,70 @@
 $(document).ready(function() {
-  //create three initial fields
-  var startingNo = 3;
-  var $node = "";
-  for(varCount=0;varCount<=startingNo;varCount++){
-      var displayCount = varCount+1;
-      $node += '<p><label for="var'+displayCount+'">Variable '+displayCount+': </label><input type="text" name="var'+displayCount+'" id="var'+displayCount+'"><span class="removeVar">Remove Variable</span></p>';
-  }
-  //add them to the DOM
-  $('form').prepend($node);
-  //remove a textfield
-  $('form').on('click', '.removeVar', function(){
-     $(this).parent().remove();
-   
-  });
-  //add a new node
-  $('#addVar').on('click', function(){
-  varCount++;
-  $node = '<p><label for="var'+varCount+'">Variable '+varCount+': </label><input type="text" name="var'+varCount+'" id="var'+varCount+'"><span class="removeVar">Remove Variable</span></p>';
-  $(this).parent().before($node);
+  var counterQ = 0;
+  var counterOp = 0;
+
+  $('#start').on("click", function(){
+    start();
   });
 
+  $('.container').on("click", '#nxt_q', function(){
+    addQ();
+  });
+
+  // $(".container").find('#nxt_op').on("click", function(){
+  $('.container').on('click', '#nxt_op', function(){
+    addOp();
+  });
+
+  function start(){
+    var newdiv = document.createElement('div');
+    newdiv.innerHTML = "Question " + (counterQ + 1) + " <br><input type='text' name=question" + (counterQ + 1) + ">";
+    document.getElementById('dynamicInput').appendChild(newdiv);
+    counterQ++;
+
+    var name = $("form > input[name=name]").val();
+    $("form > input[name=name]").replaceWith("<p id=" + name + ">" + name + "</p>");
+    $('#start').replaceWith("<br><input id='nxt_op' type='button' name='nxt_op' value='AddOption'>");
+  }
+
+  function addOp(){
+            var newdiv = document.createElement('div');
+            newdiv.innerHTML = "<br>("+ (counterOp + 1) + ")<input type='text' name=option" + counterQ + "" + (counterOp + 1) + ">";
+            document.getElementById('dynamicInput').appendChild(newdiv);
+
+       if (counterOp == 2)  {
+            var option = $("input[name=option" + counterQ + "" + counterOp + "]").val()
+            $("input[name=option" + counterQ + "" + counterOp + "]").replaceWith("<p id=option" + counterQ + "" + counterOp + ">" + option + "</p>");
+
+            $('#nxt_op').replaceWith("<br><input id ='nxt_q' type='button' name='nxt_q' value='AddQuestion'>");
+            counterOp = 0;
+       }
+       else if (counterOp == 1) {
+            var option = $("input[name=option" + counterQ + "" + counterOp + "]").val()
+            $("input[name=option" + counterQ + "" + counterOp + "]").replaceWith("<p id=option" + counterQ + "" + counterOp + ">" + option + "</p>");
+            counterOp++;
+       }
+       else {
+            var question = $("input[name=question" + counterQ + "]").val()
+            $("input[name=question" + counterQ + "]").replaceWith("<p id=question" + counterQ + ">" + question + "</p>");
+            counterOp++;
+       }
+  }
+
+  function addQ(){
+       if (counterQ == 3)  {
+            alert("You have reached the limit of adding " + counterQ + " questions");
+       }
+       else {
+            var newdiv = document.createElement('div');
+            newdiv.innerHTML = "Question " + (counterQ + 1) + " <br><input type='text' name=question" + (counterQ + 1) + ">";
+            document.getElementById('dynamicInput').appendChild(newdiv);
+
+            var question = $("input[name=question" + counterQ + "]").val()
+            $("input[name=question" + counterQ + "]").replaceWith("<p id=question" + counterQ + ">" + question + "</p>");
+
+            counterQ++;
+       }
+  }
 });
+
+//input[name=btn1]

@@ -1,0 +1,10 @@
+<h1>Edit Survey: <%=@survey.name%></h1>
+<br>
+<br>
+<% @survey.questions.each do |question|%>
+  <div id="edit_survey">
+    <%= erb :_question, locals: {question: question} %>
+  </div>
+  <p>edit</p>
+    <br>
+<% end %>

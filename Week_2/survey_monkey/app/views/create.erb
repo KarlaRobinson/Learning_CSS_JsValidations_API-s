@@ -1,15 +1,11 @@
+<h1>Create Survey</h1>
 
 
-<form method="post" action='/survey'>
-<p>
-<span id="addVar">Add Variable</span>
-</p>
-<p>
-<input type="submit" value="Check">
-</p>
+<form method="POST" action="/new/survey">
+  <input type="text" name="name" placeholder="SurveyName">
+  <div id="dynamicInput">
+      <br>
+  </div>
+
+    <input id ="start" type="button" name="start" value="Start">
 </form>
-
-<p>
-<label for="var2">Variable 2: </label>
-<input type="text" name="var2" id="var2"><span class="removeVar">Remove Variable</span>
-</p>

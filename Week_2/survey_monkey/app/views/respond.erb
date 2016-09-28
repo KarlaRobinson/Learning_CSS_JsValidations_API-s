@@ -1,0 +1,21 @@
+<h1><%=@survey.name%></h1>
+<br>
+<br>
+
+<div id="edit_survey">
+  <form action="/survey/<%= @survey.id %>" method="POST">
+  <ol type="1">
+<% @survey.questions.each_with_index do |question, index|%>
+    <li><%= question.text %>
+    <ol type="a">
+      <li><input type="radio" name="res_<%= index %>"><%= question.options[0].text %></li>
+      <li><input type="radio" name="res_<%= index %>"><%= question.options[1].text %></li>
+      <li><input type="radio" name="res_<%= index %>"><%= question.options[2].text %></li>
+    </ol>
+    <br>
+  </li>
+<% end %>
+  </ol>
+  <input type="submit" value="Send in my answers!">
+  </form>
+  </div>
