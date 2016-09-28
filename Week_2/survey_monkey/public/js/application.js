@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var counterQ = 0;
   var counterOp = 0;
+  var counterSet = 0;
 
   $('#start').on("click", function(){
     start();
@@ -10,61 +11,76 @@ $(document).ready(function() {
     addQ();
   });
 
-  // $(".container").find('#nxt_op').on("click", function(){
   $('.container').on('click', '#nxt_op', function(){
     addOp();
   });
 
   function start(){
-    var newdiv = document.createElement('div');
-    newdiv.innerHTML = "Question " + (counterQ + 1) + " <br><input type='text' name=question" + (counterQ + 1) + ">";
-    document.getElementById('dynamicInput').appendChild(newdiv);
-    counterQ++;
+          //create new question input form and add to DOM
+          var newinput = "<input type='text' placeholder='Question " + (counterQ + 1) + "' id='last_input'><ol type='a' id='olQ" + (counterQ + 1) + "'></ol>";
+          $('#dynamicInput').append(newinput);
+          counterQ++;
+          counterSet++;
 
-    var name = $("form > input[name=name]").val();
-    $("form > input[name=name]").replaceWith("<p id=" + name + ">" + name + "</p>");
-    $('#start').replaceWith("<br><input id='nxt_op' type='button' name='nxt_op' value='AddOption'>");
+          //find last_input and replace it with its value
+          var input = $('#last_input').val();
+          $('#last_input').replaceWith("<p id=" + input + ">" + input + "</p>");
+
+          //replace start button with a question button
+          $('#start').replaceWith("<input id='nxt_op' type='button' name='nxt_op' value='AddOption'>");
   }
 
   function addOp(){
-            var newdiv = document.createElement('div');
-            newdiv.innerHTML = "<br>("+ (counterOp + 1) + ")<input type='text' name=option" + counterQ + "" + (counterOp + 1) + ">";
-            document.getElementById('dynamicInput').appendChild(newdiv);
+          //create new option input form and add to DOM
+          var newinput = "<input type='text' placeholder='Option" + (counterOp + 1) + "' name=option" + counterQ + "" + (counterOp + 1) + ">";
+          $("#dynamicInput #olQ" + counterQ + "").append(newinput);
 
-       if (counterOp == 2)  {
-            var option = $("input[name=option" + counterQ + "" + counterOp + "]").val()
-            $("input[name=option" + counterQ + "" + counterOp + "]").replaceWith("<p id=option" + counterQ + "" + counterOp + ">" + option + "</p>");
+         if (counterSet == 3 && counterOp == 2){
+              //find last option input and replace it with its value
+              var option = $("input[name=option" + counterQ + "" + counterOp + "]").val()
+              $("input[name=option" + counterQ + "" + counterOp + "]").replaceWith("<li id=option" + counterQ + "" + counterOp + ">" + option + "</li>");
 
-            $('#nxt_op').replaceWith("<br><input id ='nxt_q' type='button' name='nxt_q' value='AddQuestion'>");
-            counterOp = 0;
-       }
-       else if (counterOp == 1) {
-            var option = $("input[name=option" + counterQ + "" + counterOp + "]").val()
-            $("input[name=option" + counterQ + "" + counterOp + "]").replaceWith("<p id=option" + counterQ + "" + counterOp + ">" + option + "</p>");
-            counterOp++;
-       }
-       else {
-            var question = $("input[name=question" + counterQ + "]").val()
-            $("input[name=question" + counterQ + "]").replaceWith("<p id=question" + counterQ + ">" + question + "</p>");
-            counterOp++;
-       }
+              //replace question button with a create button
+              $('#nxt_op').replaceWith("<input id='create' type='submit' name='create' value='CreateMySurvey!'>");
+         }
+         else if (counterOp == 2)  {
+              //find last option input and replace it with its value
+              var option = $("input[name=option" + counterQ + "" + counterOp + "]").val()
+              $("input[name=option" + counterQ + "" + counterOp + "]").replaceWith("<li id=option" + counterQ + "" + counterOp + ">" + option + "</li>");
+
+              //replace option button with a question button
+              $('#nxt_op').replaceWith("<input id ='nxt_q' type='button' name='nxt_q' value='AddQuestion'>");
+              counterOp++;
+         }
+         else if (counterOp == 1) {
+              //find last option input and replace it with its value
+              var option = $("input[name=option" + counterQ + "" + counterOp + "]").val()
+              $("input[name=option" + counterQ + "" + counterOp + "]").replaceWith("<li id=option" + counterQ + "" + counterOp + ">" + option + "</li>");
+
+              counterOp++;
+         }
+         else {
+              //find last question input and replace it with its value
+              var question = $('#last_input').val();
+              $('#last_input').replaceWith("<li id=question" + counterQ + ">" + question + "</li>");
+              counterOp++;
+         }
   }
 
   function addQ(){
-       if (counterQ == 3)  {
-            alert("You have reached the limit of adding " + counterQ + " questions");
-       }
-       else {
-            var newdiv = document.createElement('div');
-            newdiv.innerHTML = "Question " + (counterQ + 1) + " <br><input type='text' name=question" + (counterQ + 1) + ">";
-            document.getElementById('dynamicInput').appendChild(newdiv);
+          //create new question input form and add to DOM
+          console.log("here")
+          var newinput = "<input type='text' placeholder='Question " + (counterQ + 1) + "' id='last_input'><ol type='a' id='olQ" + (counterQ + 1) + "'></ol>";
+          $('#dynamicInput').append(newinput);
 
-            var question = $("input[name=question" + counterQ + "]").val()
-            $("input[name=question" + counterQ + "]").replaceWith("<p id=question" + counterQ + ">" + question + "</p>");
+          //find last option input and replace it with its value
+          var option = $("input[name=option" + counterQ + "" + (counterOp) + "]").val()
+           $("input[name=option" + counterQ + "" + counterOp + "]").replaceWith("<li id=option" + counterQ + "" + counterOp + ">" + option + "</li>");
+          counterOp = 0;
 
-            counterQ++;
-       }
+          //replace question button with an option button
+          $('#nxt_q').replaceWith("<input id='nxt_op' type='button' name='nxt_op' value='AddOption'>");
+          counterQ++;
+          counterSet++;
   }
 });
-
-//input[name=btn1]
