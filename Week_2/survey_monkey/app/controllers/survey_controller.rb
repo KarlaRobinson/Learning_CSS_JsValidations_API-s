@@ -4,25 +4,30 @@ get '/new/survey' do
 end
 
 post '/new/survey' do
+  p params
+  p params.length == 4
+  p params[:q1].length == 4
+  p params[:q2].length == 4
+  p params[:q3].length == 4
   # survey = Survey.new(name: params[:name])
   # current_user.surveys << survey
 
-  # question1 = Question.create(text: params[:question1])
-  # question2 = Question.create(text: params[:question2])
-  # question3 = Question.create(text: params[:question3])
+  # question1 = Question.create(text: params[:q1][0])
+  # question2 = Question.create(text: params[:q2][0])
+  # question3 = Question.create(text: params[:q3][0])
   # survey.questions << question1
   # survey.questions << question2
   # survey.questions << question3
 
-  # option1a = Option.create(text: params[:option_1a])
-  # option1b = Option.create(text: params[:option_1b])
-  # option1c = Option.create(text: params[:option_1c])
-  # option2a = Option.create(text: params[:option_2a])
-  # option2b = Option.create(text: params[:option_2b])
-  # option2c = Option.create(text: params[:option_2c])
-  # option3a = Option.create(text: params[:option_3a])
-  # option3b = Option.create(text: params[:option_3b])
-  # option3c = Option.create(text: params[:option_3c])
+  # option1a = Option.create(text: params[:q1][1])
+  # option1b = Option.create(text: params[:q1][2])
+  # option1c = Option.create(text: params[:q1][3])
+  # option2a = Option.create(text: params[:q2][1])
+  # option2b = Option.create(text: params[:q2][2])
+  # option2c = Option.create(text: params[:q2][3])
+  # option3a = Option.create(text: params[:q3][1])
+  # option3b = Option.create(text: params[:q3][2])
+  # option3c = Option.create(text: params[:q3][3])
 
   # question1.options << option1a
   # question1.options << option1b
@@ -35,8 +40,8 @@ post '/new/survey' do
   # question3.options << option3c
 
   survey = Survey.find(1)
-
-  redirect to ("/survey/#{survey.id}")
+  # redirect to ("/survey/#{survey.id}")
+  survey.id.to_s
 end
 
 # see specific survey
