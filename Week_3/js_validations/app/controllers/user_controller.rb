@@ -10,12 +10,14 @@ post '/user' do
   email = params[:email]
   password = params[:password]
   user = User.create(name: name, email: email, password: password)
-  if user == nil
-    redirect to ("/?action=Fail")
+  if user.id == nil
+    p user.errors
+    url  = "/?action=Fail"
   else
     session[:id] = user.id
-    redirect to ("/users/#{user.id}")
-  end  
+    url = "/users/#{user.id}"
+  end
+  url
 end
 
 #display a specific user
