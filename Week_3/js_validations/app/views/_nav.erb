@@ -1,0 +1,31 @@
+
+<% if current_user != nil %>
+  <form class="profile_nav" action="/users/<%=current_user.id%>" method="get">
+  <input type="submit" value="MyProfile">
+  </form>
+
+<!--   <form class="profile_nav" action='/new/survey' method="get">
+    <input type="submit" value="CreateSurvey">
+  </form> -->
+
+  <form class="profile_nav" action="/sign_out" method="post">
+    <input type="submit" value="SignOut">
+  </form>
+
+  <form class="profile_nav" action="/delete/users/<%=current_user.id%>" method="post">
+    <input type="submit" value="DeleteAccount">
+  </form>
+<% else %>
+    <form  class="profile_nav" id="signin" action="/login" method="post">
+    <input type="text" placeholder="email" name="email">
+    <input type="password" placeholder="password" name="password">
+    <input type="submit" value="Sign in!">
+  </form>
+<% end %>
+
+
+<% if current_user != nil && current_user.id == 1 %>
+  <form class="profile_nav" action='/all/users' method="get">
+    <input type="submit" value="AllUsers">
+  </form>
+<% end %>

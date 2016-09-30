@@ -1,0 +1,9 @@
+<h1>Quora Users</h1>
+
+<% @all.each do |user| %>
+<fieldset >
+  <legend>Quora User #<%=user.id%></legend>
+  <p><%= user.name %></p>
+  <p>Email:[<%= user.email %>]</p>
+</fieldset>
+<% end %>

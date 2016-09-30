@@ -1,0 +1,32 @@
+  <h1>Validations with JS</h1>
+ 
+<!-- <%# if @action == "InvalidEntry"%>
+      <h4 style="color: red">That information does not match our records.</h4>
+<%# end %>
+
+<%# if @action == "SignOut"%>
+      <h4  style="color: red">You have signed out of your account.</h4>
+<%# end %>
+
+<%# if @action == "Error"%>
+      <h4 style="color: red">You must be logged in to access this page.</h4>
+<%# end %>
+
+<%# if @action == "Delete"%>
+      <h4 style="color: red">The account has been deleted.</h4>
+<%# end %>
+
+<%# if @action == "Fail"%>
+      <h4 style="color: red">Please enter valid information. If you already have an account, you will not be allowed to create a new one.</h4>
+<%# end %> -->
+
+
+ <fieldset>
+  <legend>New to this site? Register now!</legend>
+  <form action="/user" method="post">
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="email" name="email">
+    <input type="password" placeholder="password" name="password">
+    <input type="submit" value="Register!">
+  </form>
+</fieldset>
