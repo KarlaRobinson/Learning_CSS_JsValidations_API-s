@@ -3,6 +3,7 @@ $(document).ready(function() {
   var counterOp = 0;
   var counterSet = 0;
 
+
   $('#start').on("click", function(){
     start();
   });
@@ -13,6 +14,15 @@ $(document).ready(function() {
 
   $('.container').on('click', '#nxt_op', function(){
     addOp();
+  });
+
+  $('.container').on('click', '#next', function(){
+    //find last question input and replace it with its value
+    var input = $('#last_input').val()
+    $('#last_input').replaceWith("<li id='" + $('#last_input').attr('name') + "'>" + input + "</li>");
+
+    //replace next button with a create button
+    $('#next').replaceWith("<input id='create' type='submit' name='create' value='CreateMySurvey!'>");
   });
 
   function start(){
@@ -43,8 +53,9 @@ $(document).ready(function() {
           
 
          if (counterSet == 3 && counterOp == 2){
-              //replace question button with a create button
-              $('#nxt_op').replaceWith("<input id='create' type='submit' name='create' value='CreateMySurvey!'>");
+
+              //replace question button with a next button
+              $('#nxt_op').replaceWith("<input id='next' type='button' name='next' value='done'>");
          }
          else if (counterOp == 2)  {
               //replace option button with a question button
@@ -77,12 +88,9 @@ $(document).ready(function() {
           counterSet++;
   }
 
-});
-
-
-
 $('.container').on("click", '#create', function(event){
     event.preventDefault();
+
     op11 = $('#option11').text()
     op12 = $('#option12').text()
     op13 = $('#option13').text()
@@ -107,14 +115,13 @@ $('.container').on("click", '#create', function(event){
     survey.q2 = [ques2, op21, op22, op23];
     survey.q3 = [ques3, op31, op32, op33];
 
-    // console.log(survey);
-    // console.log(survey.question);
-    // console.log(survey.question.q1.options);
-    $.post('/new/survey', survey, function(id){
-        window.location.href = "/survey/" + id;
-    });
-});
 
+    $.post('/new/survey', survey, function(id){
+      window.location.href = "/answer/survey/" + id;
+    });
+  });
+
+});
 
 
 

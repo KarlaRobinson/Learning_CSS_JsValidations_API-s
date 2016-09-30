@@ -37,28 +37,28 @@ input[type=submit]{
 }*/
 
 table {
-  border: 1px solid black;
+  /*border: 1px solid #ADD8E6;*/
   color: #ADD8E6;
   background-color: black;
+  border-radius: 7px 7px 7px 7px;
 }
 
 /*#taken:first-child {
-  text-align: left;
+  width: 300px;
+  float: left;
+}
+
+#survey_list {
+  width: 300px;
+  float: right;
 }*/
 
 table td{
   text-align: center;
-  border: .5px dotted black;
   width: 200px;
+  padding: 10px;
 }
 
-#stats {
-  display: inline-block;
-  float: left;
-  margin: 20px;
-}
-
-/*#survey_list {}*/
 
 #nxt_q {
   color: black;
@@ -74,15 +74,41 @@ table td{
   border-radius: 7px 7px 7px 7px;
 }
 
+.chart {
+  margin: 0 auto;
+  padding-top: 20px;
+}
 
-/*input[type="radio"]:checked:before {
-    content: "";
-    display: block;
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: #ADD8E6;
-}*/
+.chart .legend {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: start;
+  font-size: 12px;
+}
+
+.chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+
+.chart .label {
+  fill: black;
+  font: 14px sans-serif;
+  text-anchor: end;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.hidden {
+  display: none;
+}

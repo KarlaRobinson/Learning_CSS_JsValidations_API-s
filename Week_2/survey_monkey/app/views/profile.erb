@@ -1,7 +1,6 @@
  <h1>Hi, <%=current_user.name%>!</h1>
   <h4 >Email: <%=current_user.email%></h4>
 
-  <fieldset id="stats">
     <table id="author">
         <tr>Authored Surveys:
           <% u_surveys = @all.where(user_id: current_user.id) %>
@@ -15,7 +14,11 @@
             </tr>
             <% u_surveys.each do |survey| %>
             <tr>
-              <td><%= survey.name %></td>
+              <td>
+                <form action="/stats/survey/<%= survey.id %>" method="get">
+                <input type="submit" value="<%= survey.name %>">
+                </form>
+              </td>
               <td>http://localhost:9393/survey/<%= survey.id %></td>
               <td>Taken: <%= (survey.responses.length) / 3 %> times.</td>
             </tr>
@@ -29,7 +32,6 @@
             <td style="color: grey">You have not taken any surveys.</td>
             </tr>
           <% else %>
-            <!-- <td>Name</td> -->
             </tr>
             <% arr = [] %>
             <% @user.responses.each{ |res| arr << res.survey_id }%>
@@ -40,23 +42,28 @@
             <% end %>
           <% end %>
       </table>
-  </fieldset>
 
   <br>
-  <div id="survey_list">
-  <p>Surveys you have yet to do:</p>
-  <% if @all.length == 0 %>
-    <p>There are no surveys created yet.</p>
+  <table id="survey_list">
+    <tr>Surveys you can take!
+      <% to_do = @all.where.not(user_id: current_user.id) %>
+  <% if @all.where.not(user_id: current_user.id).length == 0 %>
+    <td>No one else has created a survey yet.</td>
+    </tr>
+  <% elsif @all.where.not(user_id: current_user.id).length == 0 %>
+    <td>No one else has created a survey yet.</td>
+    </tr>
   <% else %>
-    <% @all.each do |survey| %>
-      <li>
-      <form class="profile_nav" action="/survey/<%= survey.id %>" method="get">
+    <% @all.where.not(user_id: current_user.id).each do |survey| %>
+      <td>
+      <form class="profile_nav" action="/answer/survey/<%= survey.id %>" method="get">
       <input type="submit" value="<%= survey.name %>">
       </form>
-      </li>
+      </td>
+      </tr>
     <% end %>
   <% end %>
-  </div>
+  </table>
   <br>
 
 

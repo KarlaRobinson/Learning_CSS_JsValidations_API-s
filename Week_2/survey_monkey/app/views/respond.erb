@@ -3,14 +3,14 @@
 <br>
 
 <div id="edit_survey">
-  <form action="/survey/<%= @survey.id %>" method="POST">
+  <form action="/answer/survey/<%= @survey.id %>" method="POST">
   <ol type="1">
 <% @survey.questions.each_with_index do |question, index|%>
     <li><%= question.text %>
     <ol type="a">
-      <li><input type="radio" name="res_<%= index %>"><%= question.options[0].text %></li>
-      <li><input type="radio" name="res_<%= index %>"><%= question.options[1].text %></li>
-      <li><input type="radio" name="res_<%= index %>"><%= question.options[2].text %></li>
+      <li><input type="radio" name="option<%=index%>" value="1"><%= question.options[0].text %></li>
+      <li><input type="radio" name="option<%=index%>" value="2"><%= question.options[1].text %></li>
+      <li><input type="radio" name="option<%=index%>" value="3"><%= question.options[2].text %></li>
     </ol>
     <br>
   </li>

@@ -11,6 +11,15 @@
     application.css este es el archivo donde van tus estilos, tu css
   -->
   <link rel="stylesheet" href="/css/application.css">
+  <!-- cdn content delivery network, gets jquery library info fom google -->
+  <!-- minified (without spaces etc.) to be more compact and have less weight -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+
+  <!-- GRAPHIC LIBRARY -->
+  <script type="text/javascript" src="/js/d3.min.js"></script>
+  <script type="text/javascript" src="/js/d3.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
 
   <title></title>
 </head>
@@ -22,7 +31,5 @@
     <%= yield %>
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="/js/application.js"></script>
 </body>
 </html>

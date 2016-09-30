@@ -1,0 +1,19 @@
+
+<h1><%= @survey.name %></h1>
+
+<meta charset="utf-8">
+<svg class="chart"></svg>
+
+<script src="/js/chart.js"></script>
+
+  
+
+<ol class="hidden">
+<% for i in (0..2) do %>
+  <li><%= @survey.questions[i].text %></li>
+  <% for j in (0..2) do %>
+    <li><%= @survey.questions[i].options[j].responses.length %></li>
+    <li><%= @survey.questions[i].options[j].text %></li>
+  <% end %>
+<% end %>
+</ol>
