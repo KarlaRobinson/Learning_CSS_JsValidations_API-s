@@ -22,15 +22,21 @@ h2 {
   box-shadow:         -10px 10px 40px 0px rgba(0,0,0,0.75);
 }
 
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+
 .carousel{
   overflow: hidden;
   width: 100%;
+  margin-right: 400px;
 }
 
 .frames {
   list-style: none;
   position: relative;
-  width: 300%;
+  width: 400%;
   overflow: hidden;
   padding: 0;
   margin: 0;
@@ -40,14 +46,16 @@ h2 {
 .frames > li {
   position: relative;
   float: left;
-  width: 33.33333%; /* (100 / número de imágenes) */
+  width: 25%;  /*(100 / número de imágenes) */
 }
 
 .carousel img {
   display:block;
   width:100%;
   max-width:100%;
-}
+} 
+
+
 
 .carousel h2 {
   font-size:1em;
@@ -59,7 +67,7 @@ h2 {
   margin: 0;
   color: black;
   border-radius: 50px;
-  /*background-color:rgba(99,0,0,0.75);*/
+  background-color:rgba(99,0,0,0.75);
   background-color: rgba(255, 255, 255, 0.7);
   text-align: center;
 }
