@@ -30,3 +30,7 @@ input[type=submit]{
   border: none;
   border-radius: 7px 7px 7px 7px;
 }
+
+#error {
+  color: red;
+}
