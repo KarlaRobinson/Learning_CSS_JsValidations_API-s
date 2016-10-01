@@ -1,0 +1,36 @@
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 40px 20px 20px 20px;
+}
+th {
+  text-align: left;
+}
+
+#nav_bar {
+  background: black;
+  height: 50px;
+  text-align: center;
+  /*margin: 0 auto;*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+}
+
+.profile_nav {
+  margin-top: 10px;
+  display: inline-block;
+}
+
+input[type=submit]{
+  color: black;
+  background: linear-gradient(#ADD8E6, white);
+  border: none;
+  border-radius: 7px 7px 7px 7px;
+}
+
+#error {
+  color: red;
+}

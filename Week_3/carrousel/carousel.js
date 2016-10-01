@@ -16,7 +16,7 @@ $(document).ready(function() {
 
     $('.frames').animate({
       marginLeft: newmargin,
-    }, 500 );
+    }, 1000 );
       console.log(margin);
       console.log(newmargin);
   });
@@ -34,7 +34,7 @@ $(document).ready(function() {
 
     $('.frames').animate({
       marginLeft: parseInt(newmargin),
-    }, 500 );
+    }, 1000 );
       console.log(margin);
       console.log(newmargin);
   });
