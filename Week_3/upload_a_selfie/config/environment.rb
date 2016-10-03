@@ -22,9 +22,20 @@ require 'erb'
 
 require 'bcrypt'
 
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+require 'mini_magick'
+require 'fog/aws'
+
+
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
 APP_NAME = APP_ROOT.basename.to_s
+
+#Configuración global de todos los uploaders de CarrierWave
+CarrierWave.configure do |config|
+  config.root = APP_ROOT + 'public/'
+end
 
 # Configura los controllers y los helpers
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }

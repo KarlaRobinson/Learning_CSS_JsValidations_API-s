@@ -17,6 +17,11 @@ gem 'rake'
 
 gem 'shotgun'
 
+# Carrierwave for uploading pictures
+gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+gem 'mini_magick'
+gem 'fog'
+
 # Bcrypt
 gem 'bcrypt'
 

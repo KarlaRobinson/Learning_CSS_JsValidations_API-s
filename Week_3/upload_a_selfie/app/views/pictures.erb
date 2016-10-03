@@ -1,0 +1,11 @@
+
+
+<ul>
+  <% @photos.each do |photo| %>
+    <div> 
+      <img src="<%= photo.photo_url(:thumb) %>">
+    </div>
+  <% end %>
+</ul>
+
+
