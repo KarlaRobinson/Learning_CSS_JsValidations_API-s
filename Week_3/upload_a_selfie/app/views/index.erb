@@ -30,3 +30,12 @@
     <input type="submit" value="Register!">
   </form>
 </fieldset>
+
+  <div> 
+    <% @photos.each do |photo| %>
+          <!-- <a href="/photo/<%= photo.id %>}"> -->
+            <img src="<%= photo.photo_url(:thumb) %>" class="many">
+            <img src="<%= photo.photo_url(:large) %>" class="hidden">
+          <!-- </a> -->
+    <% end %>
+  </div>

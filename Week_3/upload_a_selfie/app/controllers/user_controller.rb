@@ -23,6 +23,7 @@ end
 #display a specific user
 get '/users/:id' do
   @user = User.find(params[:id])
+  @albums = User.find(current_user.id).albums
   erb :profile
 end
 
