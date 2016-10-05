@@ -1,16 +1,22 @@
-    <% @albums.each_with_index do |album, i| %>
-<div class="carrousel<%= i %>">
-      <h3><%= album.title %></h3>
-  <ul class="frames<%= i %>">
-      <% album.photos.each do |photo| %>
-        <li>
-          <img src="<%= photo.photo_url(:medium) %>" class="many">
-        <!--   <img src="<%#= photo.photo_url(:large) %>" class="hidden"> -->
-        </li>
-      <% end %>
-      <br>
-  </ul>
+<% @albums.each_with_index do |album, i| %>
+  <div id="album<%= i %>">
+    <div class="carrousel">
+          <h3><%= album.title %> [<%= album.photos.length %>]</h3>
+      <ul class="frames">
+          <% album.photos.each do |photo| %>
+            <li>
+              <img src="<%= photo.photo_url(:medium) %>">
+            <!--   <img src="<%#= photo.photo_url(:large) %>" class="hidden"> -->
+            </li>
+          <% end %>
+          <br>
+      </ul>
+      </div>
+      <div class="slider_controls">
+        <p STYLE="position:absolute; TOP:<%= (515 * (i)) + 300 %>px;" class="next_frame">&gt;</p>
+        <p STYLE="position:absolute; TOP:<%= (515 * (i)) + 300 %>px;" class="previous_frame">&lt;</p>
+      </div>
   </div>
-    <div class="slider_controls<%= i %>" id="next_frame<%= i %>">&gt;</div>
-    <div class="slider_controls<%= i %>" id="previous_frame<%= i %>">&lt;</div>
 <% end %>
+
+<!-- <%#= i %> -->

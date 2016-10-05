@@ -31,111 +31,111 @@ $(document).ready(function() {
     };
   });
   
-  // $('.many').on("click", function(event){
-  //   event.preventDefault();
+  // expand pictures when clicked
+  $('.many').on("click", function(event){
 
-  //   $('.many').next().removeClass('temp');
-  //   $('.many').next().addClass('hidden');
-  //   lg = $(this).next()
-  //   $(lg).removeClass('hidden');
-  //   $(lg).addClass('temp');
-  //   // $('#single').append(lg);
-  //   $(lg).css('position', 'absolute');
-  //   $(lg).css('top', '50px');
-  //   $(lg).css('left', '0px');
-  //   // $(lg).css('margin', '0px auto');
+    $('.many').next().removeClass('temp');
+    $('.many').next().addClass('hidden');
+    medium = $(this).next()
+    $(medium).removeClass('hidden');
+    $(medium).addClass('temp');
+    // $(medium).css('', '');
+    $(medium).css('position', 'absolute');
+    $(medium).css('top', '0px');
+    $(medium).css('left', '0px');
+    $(medium).css('border', '100px solid black');
+    
+    $('body').css('background', 'black');
+    $('#nav_bar').addClass('hidden');
+    $('#register').parent().addClass('hidden');
+  });
 
-  //   $('body').css('background', 'black');
-  // });
+  $('html').on('click', '.temp', function(){
+    $('body').css('background', 'none');
+    $('#nav_bar').removeClass('hidden');
+    $('#register').parent().removeClass('hidden');
 
-  // $('html').on('click', '.temp', function(){
-  //   $('.many').next().removeClass('temp');
-  //   $('.many').next().addClass('hidden');
-  //   $('body').css('background', 'none');
-  // });
+    $('.many').next().removeClass('temp');
+    $('.many').next().addClass('hidden');
+  });
 
 
 
 
   $(function() {
-  // store slider in a variable
-  var slider = $('.frames0');
-  // store the elements inside of .frames
-  var liItems = $('.frames0 li');
-  //find number of elements (photos)
-  var imageNumber = liItems.length;
-  // store buttons in a variable
-  var next = $('#next_frame0');
-  var previous  = $('#previous_frame0');
 
-
-  //adjust slider width depending on the number of photos
-    slider.css("width", imageNumber * 100 +'%');
-  //move the last photo to the beginning of the list
-  $('.frames li:last').insertBefore('.frames li:first');
-  //reposition margin so that the first image(now second in the list) is visible
-  slider.css('margin-left', '-'+100+'%');
-
-
-
-  // if(imageNumber == 0){
-  //   $('.slider_controls').css("visibility", "hidden");
-  // }
-  // else if(imageNumber == 1){
-  //   //ul width adjusts to the number of images
-  //   liItems.css("width", 100 / imageNumber+'%');
-  //   // slider is moved to 0
-  //   slider.css('margin-left', 0+'%');
-  //   //click right
-  //   next.click(function(){
-  //     alert("This album has only 1 photo");
-  //   });
-
-  //   previous.click(function(){
-  //     alert("This album has only 1 photo");
-  //   });
-  //   slider.css('margin', '0%');
-  // }
-  // else if(imageNumber == 2){
-  //   //ul width adjusts to the number of images
-  //   liItems.css("width", 100 / imageNumber+'%');
-  // }
-
-
-  
-
-  next.click(function(){
-    moveRight();
-  });
-
-  previous.click(function(){
-    moveLeft();
-  });
-
-  function moveRight(){
-    slider.animate(
-      {marginLeft:'-'+200+'%'},
-      700,
-      function(){
-          //first image becomes the last image
-          $('.frames0 li:first').insertAfter('.frames0 li:last');
-          //margin returns to -100%
-          slider.css('margin-left', '-'+100+'%');
-    });
-  }
-
-
-  function moveLeft(){
-    slider.animate(
-      {marginLeft:0},
-      700,
-      function(){
-          //last image becomes the first image
-          $('.frames0 li:last').insertBefore('.frames0 li:first');
-          //margin returns to -100%
-          slider.css('margin-left', '-'+100+'%');
+    function prepSliders(){
+      var albums = $('div div ul').parent().parent()
+      $.each( albums, function( key, value ) {
+        // find number of photos in the album
+        var imageNum = $('#album' + key + ' .frames li').length;
+        if(imageNum == 1){ $('#album' + key + ' .slider_controls').addClass('hidden');
+        }else{
+          // adjust slider width depending on the number of photos
+          $('#album' + key + ' .frames').css("width", imageNum * 100 +'%');
+          //move the last photo to the beginning of the list
+          $('#album' + key + ' .frames li:last').insertBefore('#album' + key + ' .frames li:first');
+          //reposition margin so that the first image(now second in the list) is visible
+          $('#album' + key + ' .frames').css('margin-left', '-'+100+'%');
+        }
       });
-      }
+    };
+
+    prepSliders();
+
+    // right clicker
+    $('.next_frame').click(function(){
+      // know which album was clicked
+      var album = $(this).parent().parent().attr('id');
+      // check if album has less than 3 pictures
+      if($('#' + album + ' .frames li').length == 1){
+        $('.slider_controls').css("visibility", "hidden");
+      }else if ($('#' + album + ' .frames li').length == 2){
+        // first image becomes the last image and the margin shifts to still show first image
+        $('#' + album + ' .frames li:first').insertAfter('#' + album + ' .frames li:last');
+        $('#' + album + ' .frames').css('margin-left', '0%');
+        // animate margin shift to the right
+        $('#' + album + ' .frames').animate({marginLeft:'-100%'}, 700);
+      }else{moveRight(album);}
+    });
+
+
+    // left clicker
+    $('.previous_frame').click(function(){
+      // know which album was clicked
+      var album = $(this).parent().parent().attr('id');
+      moveLeft(album);
+    });
+
+    function moveRight(album){
+      $('#' + album + ' .frames').animate(
+        {marginLeft:'-200%'},
+        700,
+        function(){
+            //first image becomes the last image
+            $('#' + album + ' .frames li:first').insertAfter('#' + album + ' .frames li:last');
+            //margin returns to -100%
+            $('#' + album + ' .frames').css('margin-left', '-100%');
+        }
+      );
+    };
+
+
+    function moveLeft(album){
+      $('#' + album + ' .frames').animate(
+        {marginLeft:0},
+        700,
+        function(){
+            //last image becomes the first image
+            $('#' + album + ' .frames li:last').insertBefore('#' + album + ' .frames li:first');
+            //margin returns to -100%
+            $('#' + album + ' .frames').css('margin-left', '-100%');
+        }
+      );
+    };
   });
+  
+  // drag pictures around
+  $("#sortable").sortable();
 
 });

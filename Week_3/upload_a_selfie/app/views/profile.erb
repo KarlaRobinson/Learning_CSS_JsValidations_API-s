@@ -17,6 +17,15 @@
 
 
 
-<!--   <div>
-    <%= erb :_photos, local:{albums: @albums}, layout: false %>
-  </div> -->
+  <h3>Your pictures:</h3>
+  <p>Drag to reorder. Click to view in full screen.</p> 
+  <ul id="sortable" >
+    <% @albums.each do |albums| %>
+      <% albums.photos.each do |photo| %>
+            <li>
+              <img src="<%= photo.photo_url(:thumb) %>" class="many">
+              <img src="<%= photo.photo_url(:large) %>" class="hidden">
+            </li>
+      <% end %>
+    <% end %>
+  </ul>
