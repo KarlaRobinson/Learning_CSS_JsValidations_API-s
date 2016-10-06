@@ -1,0 +1,82 @@
+header {
+  text-align: center;
+  background-color: black;
+}
+
+.container {
+  margin: 0px auto;
+  width: 768px;
+  /*padding: 0px 20px 20px 20px;*/
+  /*border: 1px dotted black;*/
+}
+
+.main-title {
+  text-align: center;
+}
+
+th {
+  text-align: left;
+}
+
+#cmt_area {
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
+}
+
+#cmt_area h4 {
+  margin-top: 0;
+}
+
+#new_cmt_button {
+  margin-top: 10px;
+}
+
+ul#cmt_list {
+  list-style-type: none;
+  margin: 20px 0 0;
+  padding: 0;
+}
+
+ul#cmt_list li {
+  display: block;
+  padding: 6px;
+  background-color: #F67272;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  margin: 5px 0px;
+}
+
+ul#cmt_list .author {
+  display: block;
+  font-size: 0.8em;
+  color: #fff;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+form#new_cmt {
+  width: 98%;
+  background-color: #78DDBD;
+  padding: 6px;
+  border: 1px solid #666;
+  border-radius: 3px;
+}
+
+form#new_cmt textarea {
+  width: 99%;
+  margin-bottom: 10px;
+}
+
+form#new_cmt input#authorName {
+  min-width: 50%;
+  max-width: 68%;
+}
+
+form#new_cmt input[type="submit"] {
+  min-width: 30%;
+  float: right;
+}
+
+#new_cmt p {
+  color: red;
+}
