@@ -1,0 +1,12 @@
+<form method='get' action='/'>
+  <input type='submit' value='Back'>
+</form>
+<h1><span><%= @user.username %></span></h1>
+<ul>
+  <% @user.tweets.order(post_date: :desc).each do |tweet| %>
+  <li>
+    <span><%= tweet.post_date.to_s.slice(0,16) %> </span>
+    <%= tweet.text %>
+  </li>
+  <% end %>
+</ul>
