@@ -1,13 +1,4 @@
-<h1><span>@<%= CLIENT.user.screen_name %></span></h1>
-  <ul>
-    <% CLIENT.user_timeline.each do |tweet| %>
-      <li>
-        <span><%= tweet.created_at.to_s.slice(0,10) %>_</span>
-        <%= tweet.text %>
-      </li>
-    <% end %>
-  </ul>
-
+ <h3><span>You are logged in as: @KarlaSophiaRob</span></h3>
 
   <form method='post' action='/tweet'>
     <input type="text" name="text" placeholder="Enter a new tweet">
@@ -16,5 +7,5 @@
 
   <form method='post' action='/fetch'>
     <input type="text" name="username" placeholder="Enter a twitter username">
-    <input type="submit" name="search" value="See tweets">
+    <input type="submit" name="search" value="See Tweets">
   </form>
