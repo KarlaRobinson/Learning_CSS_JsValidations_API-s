@@ -25,7 +25,7 @@ $(document).ready(function() {
 
   // create new tweet
   $('.container').on("click", 'input[name=tweet]', function(event){
-    $('input[name=tweet]').unbind('click');
+    $('input[name=tweet]').prop('disabled', true);
     event.preventDefault();
     tweet = {}
     tweet.text = $('input[name=text]').val();

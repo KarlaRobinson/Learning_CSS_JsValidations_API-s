@@ -1,0 +1,3 @@
+#file names and path that git should ignore
+
+config/twitter.yaml

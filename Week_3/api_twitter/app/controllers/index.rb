@@ -25,8 +25,6 @@ end
 
 get '/db/:username' do
   @user = User.find_by_username(params[:username])
-  p "*" * 50
-  p @user
   erb :tweets
 end
 

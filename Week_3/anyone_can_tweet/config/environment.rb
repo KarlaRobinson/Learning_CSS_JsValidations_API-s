@@ -22,6 +22,7 @@ require 'erb'
 
 # twitter api
 require 'twitter'
+require 'oauth'
 
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
@@ -35,10 +36,22 @@ Dir[APP_ROOT.join('app', 'uploaders', '*.rb')].each { |file| require file }
 # Configura la base de datos y modelos 
 require APP_ROOT.join('config', 'database')
 
-# Configura la API de Twitter para este usuario solamente
- CLIENT = Twitter::REST::Client.new do |config|
-  config.consumer_key        = "Q4VzuNM4HZu8SviRNLajZhf9W"
-  config.consumer_secret     = "YyBYQIkRLlOtsNrJ64H8d0eLdHGNgpGL0oVVng3tqkJIgCmd7E"
-  config.access_token        = "1576451786-610rENU65BEcN6bff26ZPyoXGyCzfZ0P9JSWoAV"
-  config.access_token_secret = "mm8almUVH8FDngeRnKPpcNOzxf0mGogJjv2DIdkSkzkmK"
+# Configure the API for any user
+env_config = YAML.load_file(APP_ROOT.join('config', 'twitter.yaml'))
+
+env_config.each do |key, value|
+  ENV[key] = value
 end
+
+# consumer = OAuth::Consumer.new(
+#   'consumer token', 
+#   'consumer secret', 
+#   {:site => 'http://twitter.com'}
+# )
+
+# CLIENT = Twitter::REST::Client.new do |config|
+#   config.consumer_key        = "Q4VzuNM4HZu8SviRNLajZhf9W"
+#   config.consumer_secret     = "YyBYQIkRLlOtsNrJ64H8d0eLdHGNgpGL0oVVng3tqkJIgCmd7E"
+#   config.access_token        = "1576451786-610rENU65BEcN6bff26ZPyoXGyCzfZ0P9JSWoAV"
+#   config.access_token_secret = "mm8almUVH8FDngeRnKPpcNOzxf0mGogJjv2DIdkSkzkmK"
+# end

@@ -1,0 +1,12 @@
+<h1>AnyoneCanTweet</h1>
+<h3><span>You are logged in as: <%= current_user.id %></span></h3>
+
+  <form method='post' action='/tweet'>
+    <input type="text" name="text" placeholder="Enter a new tweet">
+    <input type="submit" name="tweet" value="Tweet">
+  </form>
+
+  <form method='post' action='/fetch'>
+    <input type="text" name="username" placeholder="Enter a twitter username">
+    <input type="submit" name="search" value="See Tweets">
+  </form>
