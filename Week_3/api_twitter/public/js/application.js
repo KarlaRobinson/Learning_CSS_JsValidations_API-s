@@ -1,31 +1,39 @@
 $(document).ready(function() {
 
-  // $('.container').on("click", 'input[name=search]', function(event){
-  //   event.preventDefault();
-  //   $.post()
-  //   console.log("event: " + event);
-  //   // $('#load').css('display', 'block');
-  //   // username = $('input[name=username]').val();
-  //   // window.location.href = "/" + username;
-  // });
-
+  //search for another user's tweets
   $('.container').on("click", 'input[name=search]', function(event){
     event.preventDefault();
     user = {}
+    // collect username of interest
     user.username = $('input[name=username]').val();
-    window.location.href = "/test/" + user.username;
-    console.log("username " + user)
+    // send user to route '/fetch' to see if twitter request is needed
     $.post('/fetch', user, function(go){
-      console.log("callback: " + go)
       if(go === "twitter"){
+        // display spinner and request tweets from twitter
         $('#load').css('display', 'block');
         $.get('/twitter/' + user.username, function(){
+          console.log("here: " + user.username);
           window.location.href = "/db/" + user.username;
-          // $('#load').css('display', 'none');
         });
       }else{
+        // display tweets from database
         window.location.href = "/db/" + user.username;
       }
     });
   });
+
+  // create new tweet
+  $('.container').on("click", 'input[name=tweet]', function(event){
+    event.preventDefault();
+    tweet = {}
+    tweet.text = $('input[name=text]').val();
+    // send new tweet text to '/post', display spinner and then my tweets
+    $.post('/tweet', tweet, function(){
+      $('#load').css('display', 'block');
+      $.get('/twitter/@karlasophiarob', function(){
+            window.location.href = '/db/@karlasophiarob';
+      });
+    });
+  }); 
+
 });
