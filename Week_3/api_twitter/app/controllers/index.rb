@@ -39,7 +39,6 @@ get '/twitter/:username' do
           @user.tweets << t
         end
     end
-  # erb :tweets
   return "true"
 end
 

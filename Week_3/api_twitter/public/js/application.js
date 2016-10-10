@@ -2,6 +2,7 @@ $(document).ready(function() {
 
   //search for another user's tweets
   $('.container').on("click", 'input[name=search]', function(event){
+    $('input[name=search]').prop('disabled', true);
     event.preventDefault();
     user = {}
     // collect username of interest
@@ -24,6 +25,7 @@ $(document).ready(function() {
 
   // create new tweet
   $('.container').on("click", 'input[name=tweet]', function(event){
+    $('input[name=tweet]').unbind('click');
     event.preventDefault();
     tweet = {}
     tweet.text = $('input[name=text]').val();
