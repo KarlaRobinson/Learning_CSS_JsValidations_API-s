@@ -1,0 +1,18 @@
+<img src="/logos.png" width="160" height="25" id="logo">
+
+  <% if logged_in? %>
+  <%#else %>
+    <form method='post' action='/tweet' class="border">
+      <input type="text" name="text" placeholder="Enter a new tweet">
+      <input type="submit" name="tweet" value="Tweet">
+    </form>
+
+    <form method='get' action='/fetch' class="border">
+      <input type="text" name="username" placeholder="Enter a twitter username">
+      <input type="submit" name="search" value="See Tweets">
+    </form>
+
+    <form method='get' action='/logout'>
+      <input type="submit" name="logout" value="LogOut">
+    </form>
+  <% end %>

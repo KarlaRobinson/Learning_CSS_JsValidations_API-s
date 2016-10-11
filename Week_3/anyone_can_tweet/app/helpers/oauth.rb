@@ -1,11 +1,20 @@
 def current_user
   if session[:user_id]
-    @current_user ||= TwitterUser.find_by_id(session[:user_id])
+    @current_user ||= TwitterUser.find(session[:user_id])
   end
 end
 
 def logged_in?
   !current_user.nil?
+end
+
+def twitter_user
+  Twitter::REST::Client.new do |config|
+    config.consumer_key        = ENV['TWITTER_KEY']
+    config.consumer_secret     = ENV['TWITTER_SECRET']
+    config.access_token        = current_user.access_token
+    config.access_token_secret = current_user.access_token_secret
+  end
 end
 
 def oauth_consumer

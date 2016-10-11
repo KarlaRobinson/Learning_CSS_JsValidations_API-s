@@ -1,12 +1,27 @@
-<h1>AnyoneCanTweet</h1>
-<h3><span>You are logged in as: <%= current_user.id %></span></h3>
 
-  <form method='post' action='/tweet'>
-    <input type="text" name="text" placeholder="Enter a new tweet">
-    <input type="submit" name="tweet" value="Tweet">
-  </form>
+<h3><span>You are logged in as: @<%= current_user.name %></span></h3>
 
-  <form method='post' action='/fetch'>
-    <input type="text" name="username" placeholder="Enter a twitter username">
-    <input type="submit" name="search" value="See Tweets">
-  </form>
+
+  <% if !@user %>
+  <% @user = twitter_user %>
+  <% end %>
+
+
+<ul>
+  <% twitter_user.user_timeline(@user).each do |tweet|%>
+    <li><span><%= tweet.created_at.to_s.slice(0,16) %></span>  <%=  tweet.text %></li>
+  <% end %>
+</ul>
+
+<!-- 🔥😊💯 -->
+<!-- <p><span>Num Tweets: <%#= twitter_user.tweet_count %></span></p>
+<p><span>Following: <%#= twitter_user.following.first.screen_name %></span></p>
+<p><span>Followers: <%#= twitter_user.followers %></span></p>
+<p><span>Status: <%#= twitter_user.status %></span></p> -->
+
+<ul>
+  Friends: 
+  <% twitter_user.friends.each do |friend| %>
+    <li><span><%= friend.screen_name %></span></li>
+  <% end %>
+</ul>

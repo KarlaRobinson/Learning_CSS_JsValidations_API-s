@@ -1,6 +1,6 @@
-class CreateUsers < ActiveRecord::Migration
+class CreateTwitterUsers < ActiveRecord::Migration
   def change
-    create_table :users do |t|
+    create_table :twitter_users do |t|
       t.string :name
       t.string :access_token
       t.string :access_token_secret 
