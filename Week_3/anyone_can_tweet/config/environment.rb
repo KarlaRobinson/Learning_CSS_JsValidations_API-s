@@ -24,6 +24,11 @@ require 'erb'
 require 'twitter'
 require 'oauth'
 
+#sidekiq
+require 'sidekiq'
+require 'redis'
+require 'sidekiq/api'
+
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
 APP_NAME = APP_ROOT.basename.to_s

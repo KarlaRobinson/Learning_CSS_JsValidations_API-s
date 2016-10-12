@@ -1,27 +1,26 @@
+<form id="later" method="post" action="/later">
+  <input type="text" placeholder="Write a tweet for later" name="later">
+  <input type="submit" value="Later">
+</form>
 
-<h3><span>You are logged in as: @<%= current_user.name %></span></h3>
+<% if !@user %>
+  <h3><span> <%= current_user.name %>, welcome!</span></h3>
+<% else %>
+  <ul>
+    <% @user.tweets.order(post_date: :desc).each do |tweet|%>
+      <li><span><%= tweet.created_at.to_s.slice(0,16) %></span>  <%=  tweet.text %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-
-  <% if !@user %>
-  <% @user = twitter_user %>
-  <% end %>
-
-
-<ul>
-  <% twitter_user.user_timeline(@user).each do |tweet|%>
-    <li><span><%= tweet.created_at.to_s.slice(0,16) %></span>  <%=  tweet.text %></li>
-  <% end %>
-</ul>
-
-<!-- 🔥😊💯 -->
+<!--     <ul>
+      Friends: 
+      <%# twitter_user.friends.each do |friend| %>
+        <li><span><%#= friend.screen_name %></span></li>
+      <%# end %>
+    </ul> -->
+<!--  -->
 <!-- <p><span>Num Tweets: <%#= twitter_user.tweet_count %></span></p>
 <p><span>Following: <%#= twitter_user.following.first.screen_name %></span></p>
 <p><span>Followers: <%#= twitter_user.followers %></span></p>
 <p><span>Status: <%#= twitter_user.status %></span></p> -->
-
-<ul>
-  Friends: 
-  <% twitter_user.friends.each do |friend| %>
-    <li><span><%= friend.screen_name %></span></li>
-  <% end %>
-</ul>

@@ -28,12 +28,12 @@ th {
 #nav_bar input {
   color: #3e4dd4;
   border: solid white 2px;
-  font-size: 20px;
+  font-size: 17px;
   background-color: white;
 }
 
 #nav_bar input[placeholder] {
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .border {
@@ -46,7 +46,7 @@ th {
   border-radius: 7px;
 }
 
-#start input{
+.start input{
   position: fixed;
   top: 50%;
   left: 50%;
@@ -57,6 +57,15 @@ th {
   border: solid #3e4dd4 2px;
   border-radius: 7px;
   background-color: white;
+}
+
+p {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  color: grey;
 }
 
 #logo {

@@ -17,6 +17,20 @@ def twitter_user
   end
 end
 
+def job_is_complete(jid)
+  # Revisa si la tarea se encuentra pendiente
+  pending = Sidekiq::ScheduledSet.new
+  return false if pending.find { |job| job.jid == jid }
+  # Revisa si la tarea se encuentra en la cola 
+  waiting = Sidekiq::Queue.new 
+  return false if waiting.find { |job| job.jid == jid }
+  # Revisa si la tarea se encuentra en proceso 
+  working = Sidekiq::Workers.new
+  return false if working.find { |worker, info| info["payload"]["jid"] == jid }
+  # Si no se cumplió ninguna de las anteriores entonces la tarea ya fue procesada.  
+  true
+end
+
 def oauth_consumer
   raise RuntimeError, "Debes configurar una TWITTER_KEY y TWITTER_SECRET en tu yaml file y environment." unless ENV['TWITTER_KEY'] and ENV['TWITTER_SECRET']
   @consumer ||= OAuth::Consumer.new(
