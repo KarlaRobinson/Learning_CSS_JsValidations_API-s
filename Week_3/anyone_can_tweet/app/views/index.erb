@@ -3,5 +3,8 @@
     <input type='submit' name='start' value='Sign in with Twitter'>
   </form>
 <% else %>
-  <p class="start">@<%= current_user.name %>, welcome back!</p>
+  <p class="msg"><%= current_user.name %>, welcome back!</p>
 <% end %>
+
+
+

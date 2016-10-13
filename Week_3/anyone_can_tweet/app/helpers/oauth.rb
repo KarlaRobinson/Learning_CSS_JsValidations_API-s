@@ -8,15 +8,6 @@ def logged_in?
   !current_user.nil?
 end
 
-def twitter_user
-  Twitter::REST::Client.new do |config|
-    config.consumer_key        = ENV['TWITTER_KEY']
-    config.consumer_secret     = ENV['TWITTER_SECRET']
-    config.access_token        = current_user.access_token
-    config.access_token_secret = current_user.access_token_secret
-  end
-end
-
 def job_is_complete(jid)
   # Revisa si la tarea se encuentra pendiente
   pending = Sidekiq::ScheduledSet.new
@@ -26,7 +17,7 @@ def job_is_complete(jid)
   return false if waiting.find { |job| job.jid == jid }
   # Revisa si la tarea se encuentra en proceso 
   working = Sidekiq::Workers.new
-  return false if working.find { |worker, info| info["payload"]["jid"] == jid }
+  return false if working.find { |process_id, thread_id, work| work["payload"]["jid"] == jid }
   # Si no se cumplió ninguna de las anteriores entonces la tarea ya fue procesada.  
   true
 end

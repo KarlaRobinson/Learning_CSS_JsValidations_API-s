@@ -59,7 +59,7 @@ th {
   background-color: white;
 }
 
-p {
+.msg {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -81,9 +81,28 @@ ul {
   list-style-type: none;
 }
 
+#load {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 0, 0, 0, .8 )
+                url('/spinner.gif') 
+                50% 50% 
+                no-repeat;
+}
 
-/*#c94d56
-#9999ff
-#b0034f
-#ffff99*/
+#error p {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  color: red;
+}
+
+
+
+
 

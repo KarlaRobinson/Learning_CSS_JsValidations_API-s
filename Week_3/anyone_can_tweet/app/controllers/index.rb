@@ -3,34 +3,41 @@ get '/' do
 end
 
 post '/tweet' do
+  ### twitter request!!! ####
+  if params[:time] == ""
+    job_id = current_user.tweet_later(params[:text])
+  else
+    job_id = current_user.tweet_later(params[:text], params[:time])
+  end
+  job_id
+end
+
+post '/status/:job_id' do
+  # regresa el status de un job a una petición AJAX
+  job_is_complete(params[:job_id]).to_s
+end
+
+get '/refresh' do
   #### twitter request!!! ####
-  twitter_user.update(params[:text])
-  #### twitter request!!! ####
-  twitter_user.user_timeline(current_user.name).each do |tweet|
-      t = Tweet.new(text: tweet.text, post_date: tweet.created_at)
-      if t.save
-        current_user.tweets << t
-      end
+  current_user.twitter_user.user_timeline(current_user.name).each do |tweet|
+    t = Tweet.new(text: tweet.text, post_date: tweet.created_at)
+    if t.save
+      current_user.tweets << t
     end
-    @user = current_user
+  end
+  @user = current_user
   erb :profile
 end
 
-post '/later' do
-  p params[:later]
-  jid = current_user.tweet_later(params[:later], current_user.id)
-  job_is_complete(jid) #says true but false
-end
 
-get '/status/:job_id' do
-  # regresa el status de un job a una petición AJAX
-end
-
-get '/fetch' do
+get '/fetch/:username' do
   @user = TwitterUser.find_by_name(params[:username])
   if @user == nil
-    @user = TwitterUser.create(name: params[:username])
-  end
+    @user = TwitterUser.new(name: params[:username])
+    if !@user.save
+      @user = TwitterUser.find_by_name("@karlasophiarob")
+    end
+end
 
   # checks if user has 0 tweets or if last db entry was more than an hour ago
   if @user.tweets.length > 1
@@ -39,7 +46,7 @@ get '/fetch' do
 
   if @user.tweets.length == 0 || last_db_entry > 3600
     #### twitter request!!! ####
-    twitter_user.user_timeline(@user.name).each do |tweet|
+    current_user.twitter_user.user_timeline(@user.name).each do |tweet|
       t = Tweet.new(text: tweet.text, post_date: tweet.created_at)
       if t.save
         @user.tweets << t
@@ -48,6 +55,10 @@ get '/fetch' do
   end
   erb :profile
 end
+
+# get '/profile' do
+#   erb :profile
+# end
 
 get '/sign_in' do
   # El método `request_token` es uno de los helpers
@@ -58,6 +69,7 @@ get '/sign_in' do
 end
 
 get '/auth' do
+  p "/auth"
   # Volvemos a mandar a twitter el 'request_token' a cambio de un 'acces_token' 
   # Este 'acces_token' lo utilizaremos para futuras comunicaciones. 
   @access_token = request_token.get_access_token(:oauth_verifier => params[:oauth_verifier])
@@ -65,18 +77,24 @@ get '/auth' do
   session.delete(:request_token)
 
   # Aquí es donde deberás crear la cuenta del usuario y guardar usando el 'access_token' lo siguiente:
-  name = @access_token.params[:screen_name]
-  token = @access_token.token
-  secret = @access_token.secret
-  user = TwitterUser.find_by_name(name)
+  p name = @access_token.params[:screen_name]
+  p token = @access_token.token
+  p secret = @access_token.secret
+  p user = TwitterUser.find_by_name("@#{name}")
   if user == nil
     user = TwitterUser.new(name: "@#{name}", access_token: token, access_token_secret: secret)
     if user.save
       session[:user_id] = user.id
       erb :profile
     else
-      p "fail"
+      p "fail: User info not valid"
     end
+  elsif user.access_token == nil
+    user.access_token = token
+    user.access_token_secret = secret
+    user.save
+    session[:user_id] = user.id
+    erb :profile
   else
     session[:user_id] = user.id
     erb :profile

@@ -1,14 +1,15 @@
-<form id="later" method="post" action="/later">
-  <input type="text" placeholder="Write a tweet for later" name="later">
-  <input type="submit" value="Later">
-</form>
-
 <% if !@user %>
-  <h3><span> <%= current_user.name %>, welcome!</span></h3>
+  <h3 class="msg"><span> <%= current_user.name %>, welcome!</span></h3>
 <% else %>
   <ul>
     <% @user.tweets.order(post_date: :desc).each do |tweet|%>
-      <li><span><%= tweet.created_at.to_s.slice(0,16) %></span>  <%=  tweet.text %></li>
+    <fieldset>
+        <legend><span><%= tweet.post_date.to_s.slice(0,16) %></span></legend>
+      <li>
+        <%= tweet.created_at.to_s.slice(0,16) %>  <%=  tweet.text %>
+      </li>
+    </fieldset>
+    <br>
     <% end %>
   </ul>
 <% end %>

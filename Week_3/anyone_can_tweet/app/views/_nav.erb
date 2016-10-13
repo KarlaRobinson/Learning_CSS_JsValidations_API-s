@@ -1,8 +1,10 @@
 <img src="/logos.png" width="160" height="25" id="logo">
 
-  <% if logged_in? %>
+  <%# if logged_in? %>
+  <%#else%>
     <form method='post' action='/tweet' class="border">
       <input type="text" name="text" placeholder="Enter a new tweet">
+      in <input type="text" name="time" placeholder="0" size="3">seconds...
       <input type="submit" name="tweet" value="Tweet">
     </form>
 
@@ -14,4 +16,4 @@
     <form method='get' action='/logout'>
       <input type="submit" name="logout" value="LogOut">
     </form>
-  <% end %>
+  <%# end %>
