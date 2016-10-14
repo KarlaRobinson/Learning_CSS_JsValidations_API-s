@@ -1,20 +1,11 @@
-<!-- <div id="fb-root"></div> -->
+
 <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="true" data-auto-logout-link="true"></div>
 
 
 
 <div id="fb-root"></div>
-<p id="connect">
-  <a href="#">Connect to FB!</a>
-</p>
+<p id="msg"></p>
 
-
-<div class="logged_in">
-  <p><%= current_user.name %>  you are logged in through facebook.</p>
-  <form action='/logout' method='get'>
-    <input type="submit" value="Logout" name="logout">
-  </form>
-</div>
 
 <div class="logged_out">
   <form action='/auth/facebook' method='post'>
@@ -22,4 +13,7 @@
   </form>
 </div>
 
+  <form action='/logout' method='get'>
+    <input type="submit" value="Logout" name="logout">
+  </form>
 

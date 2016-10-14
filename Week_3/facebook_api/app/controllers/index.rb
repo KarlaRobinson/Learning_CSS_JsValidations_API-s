@@ -1,36 +1,36 @@
 get '/' do
-  # La siguiente linea hace render de la vista 
-  # que esta en app/views/index.erb
   erb :index
 end
 
-  # NOTE: When you enable cookie below in the FB.init call the GET request in the FB.login callback
-  #       will send a signed request in a cookie back the OmniAuth callback which will parse out the
-  #       authorization code and obtain an access_token with it.
-
-
-# CALLBACK STEP
-# - redirected here for server-side flow
-# - ajax request made here for client-side flow
 get '/auth/:provider/callback' do
-  p "?" * 50
-  content_type 'application/json'
-  # auth_hash = request.env["omniauth.auth"]
-  # Usa el método que creamos anteriormente para crear a tu usuario
-  # p request.env["omniauth.auth"]
-  p JSON.generate(request.env)
-
+  request.env["omniauth.auth"]
+  p "*" * 50
   p user = User.from_omniauth(request.env["omniauth.auth"])
-  #TE COPIE ESTO ATTE. VANE
 
   # Inicia su sesión
-  if user
+  # if user
     session[:id] = user.id
-  end
-
-  erb :profile
+  # end
+  ''
 end
 
+get '/profile' do
+  p "*/" * 50
+  p @graph = current_user.facebook #Koala funcion
+  # p @graph.get_object("me")
+  # p name = @graph.get_object('me')['name']
+  # p @graph.get_connections("me", "feed")
+  # p @graph.get_object("10211387752353795", {fields: ["context"]})
+  # p @graph.get_connections("10211387752353795", "friends")
+  # p @graph.put_wall_post("hey, i'm learning koala")
+
+# Usa el método facebook que creamos para poder establecer la conexión con Facebook Graph API 
+#y a partir de ahí, hacer todas las demás peticiones que necesitamos.
+
+# Muestra en tu perfil tu imagen, la lista de tus amigos, y tu feed. 
+# INVESTIGA cómo hacer éstas peticiones al API.
+  erb :profile
+end
 
 get '/logout' do
   session.clear
@@ -56,11 +56,4 @@ end
 
 #   # Inicia su sesión
 #   session[:id] = user.id
-# end
-
-# get '/profile' do
-#   erb :profile
-# # Usa el método facebook que creamos para poder establecer la conexión con Facebook Graph API y a partir de ahí, hacer todas las demás peticiones que necesitamos.
-
-# # Muestra en tu perfil tu imagen, la lista de tus amigos, y tu feed. INVESTIGA cómo hacer éstas peticiones al API.
 # end

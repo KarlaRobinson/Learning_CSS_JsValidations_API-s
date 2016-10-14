@@ -51,7 +51,7 @@ end
 
 use OmniAuth::Builder do
 provider :facebook, ENV['APP_ID'], ENV['SECRET'],
-         :scope => facebook_permissions
+         :scope => 'publish_actions, user_friends, user_about_me, public_profile, user_posts, user_photos, user_birthday'
 end
 
 

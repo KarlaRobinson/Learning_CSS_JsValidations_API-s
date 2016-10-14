@@ -1,1 +1,15 @@
-<p>profile</p>
+<%= logged_in? %>
+<% if logged_in? %>
+<p>Name:  <%= current_user.name %></p>
+<p>Status:  <%#= current_user.status %></p>
+<p>Email:  <%#= current_user.email %></p>
+<p>User_ID:  <%= current_user.uid %></p>
+<p>Provider:  <%= current_user.provider %></p>
+
+  <p><%= current_user.name %>  you are logged in through facebook.</p>
+  <% end %>
+
+
+  <form action='/logout' method='get'>
+    <input type="submit" value="Logout" name="logout">
+  </form>

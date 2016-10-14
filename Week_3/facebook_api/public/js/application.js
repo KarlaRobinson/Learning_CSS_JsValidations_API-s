@@ -13,15 +13,11 @@ window.fbAsyncInit = function() {
       e.preventDefault();
       FB.login(function(response) {
         if (response.authResponse) {
-          $('.logged_out').css('display', 'none');
-          $('.logged_in').css('display', 'block');
-          $('#connect').html('Connected! Hitting OmniAuth callback (GET /auth/facebook/callback)...');
-          // since we have cookies enabled, this request will allow omniauth to parse
-          // out the auth code from the signed request in the fbsr_XXX cookie
-          $.getJSON('/auth/facebook/callback', function(json) {
-            $('#connect').html('Connected! Callback complete.');
-            $('#results').html(JSON.stringify(json));
+          $.get('/auth/facebook/callback', function(){  
+            window.location.href = '/profile';
           });
+        }else{
+          $('#msg').replaceWith("<p id='msg'>Please check your info and try again</p>");
         }
       }); // if you want custom scopes, pass them as an extra, final argument to FB.login
     });
